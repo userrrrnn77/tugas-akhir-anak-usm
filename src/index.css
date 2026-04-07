@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import "tailwindcss";
+
+/* GLOBAL RESET & BASE STYLES */
+@layer base {
+
+  /* Reset Margin, Padding, & Box-Sizing untuk SEMUA elemen */
+  *, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --font-jakarta: "Plus Jakarta Sans", sans-serif;
+  }
+
+  /* Smooth Transition biar gak kaget pas ganti Dark Mode */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-jakarta);
+    @apply bg-slate-50 text-slate-900 antialiased tracking-tight min-h-screen overflow-x-hidden;
+    @apply dark: bg-dark-bg dark:text-slate-100;
+  }
+
+  /* Heading Reset & Style */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tighter text-slate-900 dark: text-white leading-tight;
+  }
+
+  /* Global Link Style */
+  a {
+    @apply no-underline transition-all duration-200;
+  }
+
+  /* Form Element Reset */
+  input, select, textarea, button {
+    font-family: inherit;
+    outline: none;
+  }
+}
+
+/* CUSTOM COMPONENTS */
+@layer components {
+
+  /* Card modern buat form atau profil produk */
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-lg border border-slate-200 shadow-xl rounded-2xl dark: bg-dark-card/90 dark:border-dark-border;
+  }
+
+  /* Form Input ala The Shooter */
+  .form-input {
+    @apply w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus: ring-2 focus:ring-primary-500 focus:border-transparent transition-all dark:bg-slate-900 dark:border-slate-700 dark:text-white;
+  }
+
+  /* Button Primary (Emerald) */
+  .btn-primary {
+    @apply px-6 py-3 bg-primary-500 text-white font-semibold rounded-xl hover: bg-primary-600 active:scale-95 transition-all shadow-md shadow-primary-500/20 hover:shadow-primary-600/40;
+  }
+}
+
+/* CUSTOM SCROLLBAR (Biar gak burik di Xubuntu lu) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100 dark: bg-dark-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark: bg-slate-700 rounded-full hover:bg-primary-500;
+}
