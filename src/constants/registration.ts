@@ -1,3 +1,5 @@
+// src/constants/registration.ts
+
 import type { SelectOption } from "../types/common";
 import type {
   Gender,
