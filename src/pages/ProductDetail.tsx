@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { detailProducts } from "../constants/productDetail";
 import Container from "../components/layout/Container";
 import Button from "../components/ui/Button";
@@ -9,6 +9,8 @@ import Title from "../components/common/Title";
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const product = detailProducts.find((p) => p.id === id);
+
+  const navigate = useNavigate();
 
   if (!product) {
     return (
@@ -22,20 +24,18 @@ const ProductDetail: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-24">
-        <Title>
-            {product.title}
-        </Title>
+      <Title>{product.title}</Title>
       <Container>
         {/* Navigasi Balik */}
-        <Link
-          to="/produk"
+        <button
+          onClick={() => navigate(-1)}
           className="inline-flex items-center text-emerald-600 font-bold mb-12 hover:gap-2 transition-all group">
           <ChevronLeft
             size={20}
             className="group-hover:-translate-x-1 transition-transform"
           />
           KEMBALI KE LAYANAN
-        </Link>
+        </button>
 
         <div className="grid lg:grid-cols-12 gap-16 items-start">
           {/* Sisi Kiri: Info Utama */}
