@@ -2,12 +2,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { galeryImages } from "../assets/image/galery";
 import { X } from "lucide-react";
+import Title from "../components/common/Title";
 
 const Galery = () => {
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 p-5 pt-24">
+        <Title>Mitra Hasanah | Galery</Title>
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-black text-slate-900 dark:text-white mb-8 italic uppercase tracking-tighter">
           Galeri <span className="text-emerald-600">Dokumentasi</span>
