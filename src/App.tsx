@@ -9,6 +9,7 @@ import * as pkg from "react-helmet-async";
 import { ThemeProvider } from "./context/ThemeProvider";
 import ProductDetail from "./pages/ProductDetail";
 import ScrollToTop from "./components/common/ScrollToTop";
+import Galery from "./pages/Galery";
 
 const { HelmetProvider } = pkg;
 
@@ -25,6 +26,7 @@ const App = () => {
               <Route path="/success" element={<Success />} />
               <Route path="/tentang" element={<About />} />
               <Route path="/produk" element={<Products />} />
+              <Route path="/galery" element={<Galery />} />
               <Route path="/produk/:id" element={<ProductDetail />} />
               <Route path="*" element={<Home />} />
             </Routes>
