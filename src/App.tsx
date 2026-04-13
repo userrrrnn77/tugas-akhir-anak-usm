@@ -10,6 +10,7 @@ import { ThemeProvider } from "./context/ThemeProvider";
 import ProductDetail from "./pages/ProductDetail";
 import ScrollToTop from "./components/common/ScrollToTop";
 import Galery from "./pages/Galery";
+import BaitulMaal from "./pages/BaitulMaal";
 
 const { HelmetProvider } = pkg;
 
@@ -27,6 +28,7 @@ const App = () => {
               <Route path="/tentang" element={<About />} />
               <Route path="/produk" element={<Products />} />
               <Route path="/galery" element={<Galery />} />
+              <Route path="/baitul-maal" element={<BaitulMaal />} />
               <Route path="/produk/:id" element={<ProductDetail />} />
               <Route path="*" element={<Home />} />
             </Routes>

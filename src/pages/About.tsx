@@ -24,26 +24,52 @@ const About: React.FC = () => {
     <div className="py-24 bg-slate-50 dark:bg-slate-950 min-h-screen">
       <Title>Mitra Hasanah | Tentang Kami</Title>
       <Container>
-        {/* Header - Visi & Misi Strategis */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-28">
-          <div>
+        {/* Header - Visi & Misi Strategis  tolong benernin ini bre, dia minta dikasih gambar kantor utama disini njir taik */}
+
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center mb-28">
+          {/* Sisi Kiri: Narasi */}
+          <div className="lg:w-1/2 order-2 lg:order-1">
             <span className="text-emerald-600 font-bold tracking-[0.4em] uppercase text-xs mb-4 block">
               Institutional Profile
             </span>
-            <h1 className="text-5xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-tight">
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-none italic uppercase">
               Membangun Ekonomi <br />
-              <span className="text-emerald-600 italic">
-                Ummat Berkelanjutan.
-              </span>
+              <span className="text-emerald-600">Ummat Berkelanjutan.</span>
             </h1>
+            <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border-l-8 border-emerald-500 shadow-xl">
+              <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-medium italic">
+                "KSPPS Berkah Mitra Hasanah bukan sekadar lembaga keuangan. Kami
+                adalah ekosistem pemberdayaan yang lahir dari rahim ekonomi
+                kerakyatan di Semarang untuk menghadirkan keadilan finansial
+                tanpa riba."
+              </p>
+            </div>
           </div>
-          <div className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl">
-            <p className="text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-medium italic">
-              "KSPPS Berkah Mitra Hasanah bukan sekadar lembaga keuangan. Kami
-              adalah ekosistem pemberdayaan yang lahir dari rahim ekonomi
-              kerakyatan di Semarang untuk menghadirkan keadilan finansial tanpa
-              riba."
-            </p>
+
+          {/* Sisi Kanan: Gambar Kantor (Permintaan Anak USM, Taik!) */}
+          <div className="lg:w-1/2 order-1 lg:order-2 w-full">
+            <div className="relative group">
+              {/* Dekorasi Belakang Gambar */}
+              <div className="absolute -inset-4 bg-emerald-500/10 rounded-[3rem] rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
+
+              {/* Frame Gambar Kantor */}
+              <div className="relative aspect-4/3 overflow-hidden rounded-[2.5rem] border-4 border-white dark:border-slate-800 shadow-2xl">
+                <img
+                  src={carousel.img1}
+                  alt="Kantor Utama Mitra Hasanah"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                />
+                {/* Label Badge Kantor */}
+                <div className="absolute bottom-6 left-6 bg-slate-900/80 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20">
+                  <p className="text-white text-xs font-black uppercase tracking-widest">
+                    Main Office
+                  </p>
+                  <p className="text-emerald-400 text-[10px] font-bold">
+                    Genuk, Semarang City
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -103,7 +129,7 @@ const About: React.FC = () => {
             </div>
             <div className="relative">
               <div className="aspect-video bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl">
-                <img src={carousel.img1} alt="" />
+                <img src={carousel.img2} alt="" />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-emerald-600 p-8 rounded-2xl text-white font-bold shadow-xl">
                 <p className="text-sm uppercase tracking-widest opacity-80">
