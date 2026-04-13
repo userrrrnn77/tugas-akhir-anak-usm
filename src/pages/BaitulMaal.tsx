@@ -20,10 +20,11 @@ const BaitulMaal: React.FC = () => {
 
   return (
     <div className="py-24 bg-slate-50 dark:bg-slate-950 min-h-screen relative selection:bg-emerald-500 selection:text-white">
-        <Title>Mitra Hasanah | Baitul Maal</Title>
+      <Title>Mitra Hasanah | Baitul Maal</Title>
       <Container>
         {/* HEADER SECTION */}
-        <div className="max-w-4xl mb-24">
+
+        <div className="max-w-4xl mb-24 relative">
           <div className="flex items-center gap-3 mb-6">
             <div className="h-px w-12 bg-emerald-600"></div>
             <span className="text-emerald-600 font-black tracking-[0.3em] uppercase text-xs">
@@ -32,16 +33,27 @@ const BaitulMaal: React.FC = () => {
           </div>
           <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-[0.9] uppercase italic">
             Baitul Maal <br />
-            <span className="text-emerald-600 underline decoration-emerald-500/30">
+            <span className="text-secondary-500 dark:text-emerald-600 underline decoration-emerald-500/30">
               Hasanah.
             </span>
           </h1>
-          <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl font-medium leading-relaxed border-l-4 border-emerald-500 pl-6">
-            Mengelola amanah Ziswaf dengan transparansi radikal dan penyaluran
-            yang presisi, menghadirkan senyum di setiap sudut kota.
-          </p>
-        </div>
+          {/* HEADER SECTION WRAPPER */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            {/* DESKRIPSI UTAMA */}
+            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl font-medium leading-relaxed border-l-4 border-emerald-500 pl-6">
+              Mengelola amanah Ziswaf dengan transparansi radikal dan penyaluran
+              yang presisi, menghadirkan senyum di setiap sudut kota.
+            </p>
 
+            {/* SLOGAN - MENJOROK KE KANAN (DESKTOP) / DI BAWAH (MOBILE) */}
+            <div className="md:text-right md:max-w-62.5">
+              <span className="block text-[12px] md:text-[16px] font-black text-secondary-500 uppercase tracking-[0.3em] italic leading-relaxed dark:text-primary-600">
+                "Melahirkan Amal Sholeh <br className="hidden md:block" />{" "}
+                disetiap peristiwa"
+              </span>
+            </div>
+          </div>
+        </div>
         {/* PROGRAMS LIST */}
         <div className="space-y-40">
           {BAITUL_MAAL_PROGRAMS.map((program, index) => (

@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
                 alt=""
               />
             </div>
-            <span className="text-xl font-bold text-slate-900 dark:text-white hidden sm:block tracking-tighter">
+            <span className="text-xl font-bold text-slate-900 dark:text-white sm:block tracking-tighter">
               Mitra Hasanah
             </span>
           </NavLink>

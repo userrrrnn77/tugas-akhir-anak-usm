@@ -53,11 +53,21 @@ const Home: React.FC = () => {
                   index === activeSlide ? "opacity-100" : "opacity-0"
                 }`}>
                 <img
-                // bre ini dia mau cao
                   src={slide.image}
                   alt={slide.title}
                   className="w-full h-full object-cover"
                 />
+
+                {/* OVERLAY TEKS & SLOGAN PERUSAHAAN */}
+                <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-12 md:p-20">
+                  <h1 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-4 leading-none">
+                    {slide.title}
+                  </h1>
+                  {/* INI SLOGANNYA, BRE! */}
+                  <p className="text-emerald-400 font-bold text-lg md:text-xl uppercase tracking-[0.2em] italic">
+                    Kspps Mitra usaha umat, cepat mudah, amanah, dan fleksibel
+                  </p>
+                </div>
               </div>
             ))}
 
