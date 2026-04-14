@@ -44,14 +44,6 @@ const BaitulMaal: React.FC = () => {
               Mengelola amanah Ziswaf dengan transparansi radikal dan penyaluran
               yang presisi, menghadirkan senyum di setiap sudut kota.
             </p>
-
-            {/* SLOGAN - MENJOROK KE KANAN (DESKTOP) / DI BAWAH (MOBILE) */}
-            <div className="md:text-right md:max-w-62.5">
-              <span className="block text-[12px] md:text-[16px] font-black text-secondary-500 uppercase tracking-[0.3em] italic leading-relaxed dark:text-primary-600">
-                "Melahirkan Amal Sholeh <br className="hidden md:block" />{" "}
-                disetiap peristiwa"
-              </span>
-            </div>
           </div>
         </div>
         {/* PROGRAMS LIST */}
@@ -196,6 +188,14 @@ const BaitulMaal: React.FC = () => {
         <div className="mt-56 p-12 md:p-24 bg-slate-900 rounded-[4rem] text-center relative overflow-hidden border border-white/5">
           <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/20 rounded-full -mr-32 -mt-32 blur-[120px]"></div>
           <div className="relative z-10">
+
+          <div className="mb-10 flex flex-col items-center">
+              <span className="text-secondary-500 dark:text-emerald-500 font-black text-sm md:text-lg uppercase tracking-[0.4em] italic mb-4">
+                "Melahirkan Amal Sholeh disetiap peristiwa"
+              </span>
+              <div className="h-px w-24 bg-emerald-500/30"></div>
+            </div>
+
             <h2 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter uppercase italic leading-[0.8]">
               Siap Menjadi <br />{" "}
               <span className="text-emerald-500 text-6xl md:text-9xl tracking-tighter">

@@ -57,17 +57,6 @@ const Home: React.FC = () => {
                   alt={slide.title}
                   className="w-full h-full object-cover"
                 />
-
-                {/* OVERLAY TEKS & SLOGAN PERUSAHAAN */}
-                <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-12 md:p-20">
-                  <h1 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-4 leading-none">
-                    {slide.title}
-                  </h1>
-                  {/* INI SLOGANNYA, BRE! */}
-                  <p className="text-emerald-400 font-bold text-lg md:text-xl uppercase tracking-[0.2em] italic">
-                    Kspps Mitra usaha umat, cepat mudah, amanah, dan fleksibel
-                  </p>
-                </div>
               </div>
             ))}
 
@@ -106,6 +95,31 @@ const Home: React.FC = () => {
         </Container>
 
         <CompanyBrief />
+
+        {/* SECTION SLOGAN PERUSAHAAN - THE MIDDLE BRIDGE */}
+        <div className="py-16 bg-white dark:bg-slate-900/50 border-y border-slate-100 dark:border-slate-800">
+          <Container>
+            <div className="flex flex-col items-center text-center">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="h-0.5 w-8 bg-emerald-500"></div>
+                <span className="text-emerald-500 font-black text-xs uppercase tracking-[0.5em]">
+                  Our Identity
+                </span>
+                <div className="h-0.5 w-8 bg-emerald-500"></div>
+              </div>
+
+              <h2 className="text-2xl md:text-4xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight max-w-4xl">
+                Kspps Mitra usaha umat, <br className="hidden md:block" />
+                <span className="text-emerald-600">
+                  cepat, mudah, amanah,
+                </span>{" "}
+                dan fleksibel
+              </h2>
+
+              <div className="mt-6 h-1 w-20 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+            </div>
+          </Container>
+        </div>
 
         <ProductSection />
 
