@@ -58,7 +58,7 @@ const Stepper: React.FC<StepperProps> = ({ currentStep, steps }) => {
           </React.Fragment>
         ))}
       </div>
-      <div className="h-10" /> 
+      <div className="h-10" />
     </div>
   );
 };
