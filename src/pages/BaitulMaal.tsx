@@ -20,7 +20,7 @@ const BaitulMaal: React.FC = () => {
 
   return (
     <div className="py-24 bg-slate-50 dark:bg-slate-950 min-h-screen relative selection:bg-emerald-500 selection:text-white">
-      <Title>Mitra Hasanah | Baitul Maal</Title>
+      <Title>Baitul Maal | Mitra Hasanah</Title>
       <Container>
         {/* HEADER SECTION */}
 

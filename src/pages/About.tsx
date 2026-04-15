@@ -22,7 +22,7 @@ const About: React.FC = () => {
 
   return (
     <div className="py-24 bg-slate-50 dark:bg-slate-950 min-h-screen">
-      <Title>Mitra Hasanah | Tentang Kami</Title>
+      <Title>Tentang Kami | Mitra Hasanah</Title>
       <Container>
         {/* Header - Visi & Misi Strategis  tolong benernin ini bre, dia minta dikasih gambar kantor utama disini njir taik */}
 

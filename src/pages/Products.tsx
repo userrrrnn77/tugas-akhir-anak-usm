@@ -15,7 +15,7 @@ const Products: React.FC = () => {
 
   return (
     <div className="py-24 bg-slate-50 dark:bg-slate-950 min-h-screen">
-      <Title>Mitra Hasanah | Produk</Title>
+      <Title>Produk | Mitra Hasanah</Title>
       <Container>
         {/* Header Section - Tetap sesuai kode lu */}
         <div className="mb-20 border-l-8 border-emerald-600 pl-6 max-w-2xl">

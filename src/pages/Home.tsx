@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from "react"; // Tambah useEffect, bgsd!
+import React, { useState, useEffect } from "react";
 import Container from "../components/layout/Container";
 import Stepper from "../components/form/Stepper";
 import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
 import ProductSection from "../components/layout/ProductSection";
 import Title from "../components/common/Title";
-import { ChevronLeft, ChevronRight } from "lucide-react"; // Buat navigasi, taik!
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { carousel } from "../assets/image/carousel";
 import CompanyBrief from "../components/layout/CompanyBrief";
-
 import { StepDataPribadi, StepPekerjaan, StepKonfirmasi } from "./Steps";
 import { useRegistrationStore } from "../store/useRegistrationStore";
-import { toast } from "sonner"; // Atau pake alert biasa kalo kaga ada sonner
+import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 const Home: React.FC = () => {
-  // const [currentStep, setCurrentStep] = useState(1);
   const [activeSlide, setActiveSlide] = useState(0); // State Carousel
+
+  const navigate = useNavigate();
 
   const { currentStep, nextStep, prevStep, submitForm, isLoading, formData } =
     useRegistrationStore();
 
   const steps = ["Data Diri", "Pekerjaan", "Selesai"];
 
-  // Dummy Data Carousel - Taruh di constants ntar kalo udah rapi, Bre!
   const slides = [
     {
       image: carousel.img1,
@@ -41,10 +41,10 @@ const Home: React.FC = () => {
         return toast.error("Ceklis dulu persetujuannya, taik!");
       }
 
-      const result = await submitForm(); // yang ini bre home line 44
+      const result = await submitForm();
       if (result.success) {
-        toast.success(result.message); // toastnya ga muncul bre,
-        // Ntar lu arahin ke page 'Success' atau apa kek
+        toast.success(result.message);
+        navigate("/success");
       } else {
         toast.error(result.message);
       }
