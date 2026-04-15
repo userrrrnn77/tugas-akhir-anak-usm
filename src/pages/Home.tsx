@@ -9,11 +9,18 @@ import { ChevronLeft, ChevronRight } from "lucide-react"; // Buat navigasi, taik
 import { carousel } from "../assets/image/carousel";
 import CompanyBrief from "../components/layout/CompanyBrief";
 
+import { StepDataPribadi, StepPekerjaan, StepKonfirmasi } from "./Steps";
+import { useRegistrationStore } from "../store/useRegistrationStore";
+import { toast } from "sonner"; // Atau pake alert biasa kalo kaga ada sonner
+
 const Home: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+  // const [currentStep, setCurrentStep] = useState(1);
   const [activeSlide, setActiveSlide] = useState(0); // State Carousel
 
-  const steps = ["Data Diri", "Alamat", "Pekerjaan", "Selesai"];
+  const { currentStep, nextStep, prevStep, submitForm, isLoading, formData } =
+    useRegistrationStore();
+
+  const steps = ["Data Diri", "Pekerjaan", "Selesai"];
 
   // Dummy Data Carousel - Taruh di constants ntar kalo udah rapi, Bre!
   const slides = [
@@ -27,6 +34,25 @@ const Home: React.FC = () => {
     },
   ];
 
+  const handleAction = async () => {
+    if (currentStep === steps.length) {
+      // 🛡️ Validasi dikit sebelum kirim, bgsd!
+      if (!formData.isAgreed) {
+        return toast.error("Ceklis dulu persetujuannya, taik!");
+      }
+
+      const result = await submitForm(); // yang ini bre home line 44
+      if (result.success) {
+        toast.success(result.message); // toastnya ga muncul bre,
+        // Ntar lu arahin ke page 'Success' atau apa kek
+      } else {
+        toast.error(result.message);
+      }
+    } else {
+      nextStep();
+    }
+  };
+
   // Logic Auto-slide biar kaga kaku, bgsd!
   useEffect(() => {
     const interval = setInterval(() => {
@@ -34,10 +60,6 @@ const Home: React.FC = () => {
     }, 5000);
     return () => clearInterval(interval);
   }, [slides.length]);
-
-  const nextStep = () =>
-    setCurrentStep((prev) => Math.min(prev + 1, steps.length));
-  const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col">
@@ -125,29 +147,38 @@ const Home: React.FC = () => {
 
         <Container>
           <Card
-            className="max-w-3xl mx-auto shadow-2xl border-t-4 border-t-emerald-600 rounded-3xl"
+            className="max-w-3xl mx-auto shadow-2xl border-t-4 border-t-emerald-600 rounded-3xl p-8"
             id="register">
             <Stepper currentStep={currentStep} steps={steps} />
-            <div className="mt-12 min-h-75 flex flex-col justify-center items-center">
-              <div className="text-center">
-                <h2 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic">
-                  Tahap {currentStep}: {steps[currentStep - 1]}
-                </h2>
-                <p className="text-slate-500 mt-2 font-medium">
-                  Sedang menyiapkan form pendaftaran, tunggu sebentar Bre! ☕
-                </p>
-              </div>
+
+            <div className="mt-12 min-h-75 flex flex-col items-center">
+              {/* 🚀 CONDITIONAL RENDERING: Di sini intinya, Bre! */}
+              {currentStep === 1 && <StepDataPribadi />}
+              {currentStep === 2 && <StepPekerjaan />}
+              {currentStep === 3 && <StepKonfirmasi />}
             </div>
 
             <div className="mt-12 flex justify-between border-t border-slate-100 dark:border-slate-800 pt-8">
               <Button
                 variant="outline"
                 onClick={prevStep}
-                disabled={currentStep === 1}>
+                disabled={currentStep === 1 || isLoading}>
                 Kembali
               </Button>
-              <Button onClick={nextStep}>
-                {currentStep === steps.length ? "Kirim Pendaftaran" : "Lanjut"}
+
+              <Button
+                onClick={handleAction}
+                disabled={isLoading}
+                className={
+                  currentStep === steps.length
+                    ? "bg-emerald-600 hover:bg-emerald-700"
+                    : ""
+                }>
+                {isLoading
+                  ? "Sabar Bre..."
+                  : currentStep === steps.length
+                    ? "Kirim Pendaftaran"
+                    : "Lanjut"}
               </Button>
             </div>
           </Card>

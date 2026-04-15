@@ -11,6 +11,7 @@ import ProductDetail from "./pages/ProductDetail";
 import ScrollToTop from "./components/common/ScrollToTop";
 import Galery from "./pages/Galery";
 import BaitulMaal from "./pages/BaitulMaal";
+import { Toaster } from "sonner";
 
 const { HelmetProvider } = pkg;
 
@@ -18,6 +19,7 @@ const App = () => {
   return (
     <HelmetProvider>
       <ThemeProvider>
+        <Toaster position="top-center" richColors closeButton />
         <Router>
           <ScrollToTop />
           <Navbar />
