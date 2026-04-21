@@ -15,6 +15,7 @@ interface RegistrationData {
   education: "SD/SMP" | "SMA" | "Akademi/D-3/S1" | "S2/S3";
   monthlyIncome: string;
   address: string;
+  addressDomisili: string;
   whatsapp: string;
   selectedProduct: string;
   initialDeposit: string;
@@ -79,6 +80,7 @@ const initialData: RegistrationData = {
   education: "SMA",
   monthlyIncome: "< Rp. 500.000,-",
   address: "",
+  addressDomisili: "",
   whatsapp: "",
   selectedProduct: "SIRELA",
   initialDeposit: "0",
@@ -122,7 +124,7 @@ export const useRegistrationStore = create<RegistrationStore>()(
             birthDate: new Date(formData.dob),
             gender: formData.gender,
             addressKTP: formData.address,
-            addressDomisili: formData.address,
+            addressDomisili: formData.addressDomisili,
             phoneNumber: formData.whatsapp,
             ktpNumber: formData.nik,
             occupation: formData.occupation,

@@ -1,7 +1,7 @@
 // src/api/axios.ts
 import axios from "axios";
 
-const baseURl = import.meta.env.VITE_CORE_URL
+const baseURl = import.meta.env.VITE_CORE_URL;
 
 const api = axios.create({
   baseURL: baseURl,
@@ -11,3 +11,10 @@ const api = axios.create({
 });
 
 export default api;
+
+export interface ResponseBre<T = unknown> {
+  success: boolean;
+  message: string;
+  user: T;
+  data?: T;
+}

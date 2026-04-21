@@ -4,7 +4,11 @@ import * as pkg from "react-helmet-async";
 
 const { Helmet } = pkg;
 
-const Title = ({ children }) => {
+interface TitleProps {
+  children: string;
+}
+
+const Title = ({ children }: TitleProps) => {
   return (
     <Helmet>
       <title>{children}</title>

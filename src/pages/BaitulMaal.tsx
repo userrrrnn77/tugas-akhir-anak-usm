@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Container from "../components/layout/Container";
-import { BAITUL_MAAL_PROGRAMS } from "../constants/baitulMaal";
 import Title from "../components/common/Title";
+import useLayananStore from "../store/useLayananStore";
 
 const BaitulMaal: React.FC = () => {
   // --- STATE & REF (THE WIZARD MODAL LOGIC) ---
@@ -9,6 +9,14 @@ const BaitulMaal: React.FC = () => {
   const [modalContent, setModalContent] = useState<string>("");
   const [modalType, setModalType] = useState<"video" | "image">("video");
   const modalRef = useRef<HTMLDivElement>(null);
+
+  // 1. Ambil data programs dan fungsinya langsung dari Store
+  const { programs, fetchAllPrograms, isLoading } = useLayananStore();
+
+  // 2. useEffect cuma buat manggil perintah tarik data
+  useEffect(() => {
+    fetchAllPrograms();
+  }, [fetchAllPrograms]);
 
   // --- HANDLER: TUTUP MODAL ---
   const closeModal = (e: React.MouseEvent) => {
@@ -48,7 +56,9 @@ const BaitulMaal: React.FC = () => {
         </div>
         {/* PROGRAMS LIST */}
         <div className="space-y-40">
-          {BAITUL_MAAL_PROGRAMS.map((program, index) => (
+          {isLoading ? <>
+            Loading...
+          </> : programs.map((program, index) => (
             <div
               key={program.id}
               className={`flex flex-col ${
@@ -188,8 +198,7 @@ const BaitulMaal: React.FC = () => {
         <div className="mt-56 p-12 md:p-24 bg-slate-900 rounded-[4rem] text-center relative overflow-hidden border border-white/5">
           <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/20 rounded-full -mr-32 -mt-32 blur-[120px]"></div>
           <div className="relative z-10">
-
-          <div className="mb-10 flex flex-col items-center">
+            <div className="mb-10 flex flex-col items-center">
               <span className="text-secondary-500 dark:text-emerald-500 font-black text-sm md:text-lg uppercase tracking-[0.4em] italic mb-4">
                 "Melahirkan Amal Sholeh disetiap peristiwa"
               </span>

@@ -39,7 +39,7 @@ export const detailProducts = [
           "Prinsip Syariah: Dikelola dengan akad Wadiah Yad Dhamanah atau Mudharabah.",
           "Fleksibilitas Tinggi: Penarikan dana bisa dilakukan kapan saja selama jam operasional.",
           "Setoran Ringan: Memudahkan siapa saja untuk membangun kebiasaan menabung.",
-          "Fungsi Dana Likuid: Efektif sebagai kantong cadangan kebutuhan mendadak.",
+          "Fungsi Dana Likuid: Efektif sebagai kantong cadangan kebutuhan mendadak.", 
           "Administrasi Transparan: Seluruh mutasi tercatat rapi secara digital.",
         ],
       },

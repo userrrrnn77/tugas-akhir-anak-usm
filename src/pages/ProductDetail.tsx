@@ -1,30 +1,55 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { detailProducts } from "../constants/productDetail";
+// import { detailProducts } from "../constants/productDetail";
 import Container from "../components/layout/Container";
 import Button from "../components/ui/Button";
 import { ChevronLeft, CheckCircle2, ShieldCheck } from "lucide-react";
 import Title from "../components/common/Title";
+import useLayananStore from "../store/useLayananStore";
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const product = detailProducts.find((p) => p.id === id);
 
   const navigate = useNavigate();
 
-  if (!product) {
+  const { activeProductDetail, fetchDetailProduct, isLoading } =
+    useLayananStore();
+
+  // 3. Fetch data detail berdasarkan ID dari URL
+  useEffect(() => {
+    if (id) {
+      fetchDetailProduct(id);
+    }
+  }, [id, fetchDetailProduct]);
+
+  // 4. Handle Loading
+  if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
-        <h1 className="text-2xl font-black text-slate-900 dark:text-white uppercase italic">
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900">
+        <h1 className="text-xl font-bold animate-pulse text-blue-600">
+          Lagi Bongkar Detail Produk, Sabar Bre... ☕
+        </h1>
+      </div>
+    );
+  }
+
+  // 5. Handle Kalo Data Kaga Ketemu
+  if (!activeProductDetail) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 p-6 text-center">
+        <h1 className="text-3xl font-black text-slate-900 uppercase italic mb-4">
           Produk Ga Ketemu, Bre! ☕
         </h1>
+        <Button onClick={() => navigate(-1)} variant="primary">
+          <ChevronLeft className="mr-2" /> Balik Aja Bgsd
+        </Button>
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-24">
-      <Title>{product.title}</Title>
+      <Title>{activeProductDetail.title}</Title>
       <Container>
         {/* Navigasi Balik */}
         <button
@@ -44,15 +69,15 @@ const ProductDetail: React.FC = () => {
               SYARIAH FINANCIAL PRODUCT
             </span>
             <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-none italic uppercase">
-              {product.title}
+              {activeProductDetail.title}
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium mb-12 max-w-2xl">
-              {product.description}
+              {activeProductDetail.description}
             </p>
 
             {/* Grid Sections */}
             <div className="grid gap-12">
-              {product.sections.map((section, idx) => (
+              {activeProductDetail.sections.map((section, idx) => (
                 <div key={idx} className="group">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="h-px grow bg-slate-200 dark:bg-slate-800"></div>
