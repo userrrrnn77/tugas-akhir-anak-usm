@@ -41,14 +41,14 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      {...props}
       className={cn(
         "inline-flex items-center justify-center rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed",
         variants[variant],
         sizes[size],
         className,
       )}
-      disabled={isLoading || disabled}
-      {...props}>
+      disabled={isLoading || disabled}>
       {isLoading ? (
         <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
       ) : null}

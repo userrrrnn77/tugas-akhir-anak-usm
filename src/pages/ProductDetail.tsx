@@ -25,11 +25,42 @@ const ProductDetail: React.FC = () => {
   // 4. Handle Loading
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900">
-        <h1 className="text-xl font-bold animate-pulse text-blue-600">
-          Lagi Bongkar Detail Produk, Sabar Bre... ☕
-        </h1>
-      </div>
+      <Container className="py-12 animate-pulse">
+        {/* Skeleton Title & Deskripsi */}
+        <div className="mb-12">
+          <div className="h-4 w-24 bg-slate-200 dark:bg-slate-800 rounded mb-8"></div>
+          <div className="h-12 w-2/3 bg-slate-200 dark:bg-slate-800 rounded-xl mb-6"></div>
+          <div className="h-4 w-full bg-slate-200 dark:bg-slate-800 rounded mb-2"></div>
+          <div className="h-4 w-5/6 bg-slate-200 dark:bg-slate-800 rounded mb-2"></div>
+        </div>
+
+        <div className="grid gap-12">
+          {[1, 2].map((s) => (
+            <div key={s} className="group">
+              {/* Skeleton Subtitle Line */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="h-px grow bg-slate-200 dark:bg-slate-800"></div>
+                <div className="h-6 w-32 bg-slate-200 dark:bg-slate-800 rounded italic"></div>
+              </div>
+
+              {/* Skeleton Grid Items */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                {[1, 2, 3, 4].map((i) => (
+                  <div
+                    key={i}
+                    className="h-20 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 flex items-center p-4 gap-3">
+                    <div className="w-5 h-5 bg-slate-200 dark:bg-slate-800 rounded-full shrink-0"></div>
+                    <div className="space-y-2 w-full">
+                      <div className="h-3 w-full bg-slate-200 dark:bg-slate-800 rounded"></div>
+                      <div className="h-3 w-2/3 bg-slate-200 dark:bg-slate-800 rounded"></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Container>
     );
   }
 
@@ -121,7 +152,9 @@ const ProductDetail: React.FC = () => {
               </p>
 
               <Link to="/#register">
-                <Button className="w-full bg-white text-emerald-600 hover:bg-emerald-50 font-black py-6 rounded-2xl text-lg uppercase shadow-xl">
+                <Button
+                  onClick={() => ""}
+                  className="w-full bg-white text-emerald-600 hover:bg-emerald-50 font-black py-6 rounded-2xl text-lg uppercase shadow-xl">
                   DAFTAR SEKARANG
                 </Button>
               </Link>

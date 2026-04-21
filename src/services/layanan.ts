@@ -71,11 +71,10 @@ export const getProgramById = (id: string) =>
 // =========================
 
 export interface gallery {
-  _id?: string;
-  src?: string;
-  alt?: string;
-  category?: string;
-  publicId?: string;
+  _id: string;
+  src: string;
+  category: string;
+  publicId: string;
 }
 
 export const getAllGallery = () => api.get<ResponseBre>("/gallery");

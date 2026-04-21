@@ -96,6 +96,12 @@ export const StepPekerjaan = () => {
           value={formData.address}
           onChange={(e) => updateField("address", e.target.value)}
         />
+        <Input
+          label="Alamat Domisili"
+          placeholder="Nama jalan, No. Rumah, RT/RW, Kec, Kota"
+          value={formData.addressDomisili}
+          onChange={(e) => updateField("addressDomisili", e.target.value)}
+        />
       </div>
     </div>
   );

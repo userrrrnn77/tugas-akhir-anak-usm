@@ -4,6 +4,7 @@ import Container from "./Container";
 import Button from "../ui/Button";
 import { Menu, X, Sun, Moon } from "lucide-react"; // Import icon jembot! 🚬
 import { useTheme } from "../../hooks/useTheme";
+import logoNav from "../../assets/logoBMH.png";
 
 const Navbar: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
@@ -31,15 +32,9 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <NavLink to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center font-bold text-white text-xl shadow-lg shadow-emerald-600/20">
-              <img
-                src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwniKfpeS2y-BjxmDbbNIMMvsNMxejIYvwMQ-CGGp1RbRhW6aPnLtwVKd9fW_7xGDnEyz_9fpfJ15CRvwGiHnFwXSsyYhaOnnJJzRJ5D2G1LyjmDUFefVYXr5paIjElg/s220/cover+perpres.jpg"
-                alt=""
-              />
+            <div className="w-40 h-10 rounded-lg flex items-center justify-center font-bold text-white text-xl">
+              <img src={logoNav} alt="" />
             </div>
-            <span className="text-xl font-bold text-slate-900 dark:text-white sm:block tracking-tighter">
-              Mitra Hasanah
-            </span>
           </NavLink>
 
           {/* Menu Desktop - Hidden di Mobile */}
@@ -100,11 +95,25 @@ const Navbar: React.FC = () => {
               <Button
                 variant="primary"
                 className="w-full"
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault(); // Stop semua aksi default
+                  e.stopPropagation(); // Stop event biar kaga lari ke parent
+
+                  console.log("KLIK MASUK, BRE! AMAN!");
+
                   setIsOpen(false);
-                  document
-                    .getElementById("register")
-                    ?.scrollIntoView({ behavior: "smooth" });
+
+                  // Pake window.location.assign biar maksa pindah kalau navigate bapuk
+                  if (window.location.pathname !== "/") {
+                    window.location.assign("/#register");
+                  } else {
+                    const el = document.getElementById("register");
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                    } else {
+                      console.log("Elemen #register KAGA ADA bgsd!");
+                    }
+                  }
                 }}>
                 Daftar Sekarang
               </Button>

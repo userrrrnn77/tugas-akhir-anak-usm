@@ -12,10 +12,21 @@ import ScrollToTop from "./components/common/ScrollToTop";
 import Galery from "./pages/Galery";
 import BaitulMaal from "./pages/BaitulMaal";
 import { Toaster } from "sonner";
+import { useEffect } from "react";
 
 const { HelmetProvider } = pkg;
 
 const App = () => {
+  useEffect(() => {
+    if (window.location.hash === "#register") {
+      setTimeout(() => {
+        document
+          .getElementById("register")
+          ?.scrollIntoView({ behavior: "smooth" });
+      }, 500); // Kasih nafas dikit buat render
+    }
+  }, []);
+
   return (
     <HelmetProvider>
       <ThemeProvider>

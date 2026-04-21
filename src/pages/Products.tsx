@@ -46,56 +46,81 @@ const Products: React.FC = () => {
             <div className="h-px grow bg-slate-200 dark:bg-slate-800" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            {isLoading ? (
-              <>Loading...</>
-            ) : (
-              simpanan.map((item) => {
-                const Icon = item.icon as unknown as LucideIcon;
+            {isLoading
+              ? [simpanan.length].map((i) => (
+                  <div
+                    key={i}
+                    className="group overflow-hidden bg-white dark:bg-slate-900 rounded-3xl shadow-xl flex flex-col animate-pulse">
+                    {/* Skeleton Image Area */}
+                    <div className="h-40 bg-slate-200 dark:bg-slate-800 relative">
+                      <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
+                      {/* Skeleton Icon Box */}
+                      <div className="absolute bottom-3 left-3 w-8 h-8 bg-slate-300 dark:bg-slate-700 rounded-lg"></div>
+                    </div>
 
-                return (
-                  <Card
-                    key={item.id}
-                    className="group overflow-hidden p-0 border-none shadow-xl bg-white dark:bg-slate-900 flex flex-col cursor-zoom-in"
-                    onClick={() => setSelectedImg(item.image)} // 3. Click buat zoom
-                  >
-                    <div className="h-40 overflow-hidden relative">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
-                      <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 to-transparent opacity-60" />
-                      <div className="absolute bottom-3 left-3 flex items-center gap-2">
-                        <div className="p-1.5 bg-emerald-600 rounded-lg text-white shadow-lg">
-                          <Icon />
-                        </div>
+                    {/* Skeleton Content Area */}
+                    <div className="p-5 grow space-y-3">
+                      <div className="h-5 w-3/4 bg-slate-200 dark:bg-slate-800 rounded-md italic"></div>
+                      <div className="h-3 w-1/2 bg-emerald-100 dark:bg-emerald-900/30 rounded"></div>
+                      <div className="space-y-2 pt-2">
+                        <div className="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded"></div>
+                        <div className="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded"></div>
+                        <div className="h-3 w-2/3 bg-slate-100 dark:bg-slate-800 rounded"></div>
                       </div>
                     </div>
-                    <div className="p-5 grow">
-                      <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 uppercase tracking-tight italic">
-                        {item.title}
-                      </h3>
-                      <p className="text-[9px] font-bold text-emerald-600 uppercase tracking-[0.15em] mb-3">
-                        {item.fullTitle}
-                      </p>
-                      <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium line-clamp-3">
-                        {item.desc}
-                      </p>
+
+                    {/* Skeleton Button Area */}
+                    <div className="p-5 pt-0">
+                      <div className="w-full h-10 bg-slate-100 dark:bg-slate-800 rounded-xl"></div>
                     </div>
-                    <div className="p-5 pt-0 mt-auto">
-                      <Link
-                        to={`/produk/${item.id}`}
-                        className="w-full inline-flex items-center justify-center gap-2 py-3 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-black uppercase tracking-widest rounded-xl hover:bg-emerald-600 hover:text-white transition-all duration-300 group/btn">
-                        LIHAT DETAIL
-                        <span className="group-hover/btn:translate-x-1 transition-transform">
-                          →
-                        </span>
-                      </Link>
-                    </div>
-                  </Card>
-                );
-              })
-            )}
+                  </div>
+                ))
+              : simpanan.map((item) => {
+                  const Icon = item.icon as unknown as LucideIcon;
+
+                  return (
+                    <Card
+                      key={item.id}
+                      className="group overflow-hidden p-0 border-none shadow-xl bg-white dark:bg-slate-900 flex flex-col cursor-zoom-in"
+                      onClick={() => setSelectedImg(item.image)} // 3. Click buat zoom
+                    >
+                      <div className="h-40 overflow-hidden relative">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 to-transparent opacity-60" />
+                        <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                          <div className="p-1.5 bg-emerald-600 rounded-lg text-white shadow-lg">
+                            <Icon />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-5 grow">
+                        <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1 uppercase tracking-tight italic">
+                          {item.title}
+                        </h3>
+                        <p className="text-[9px] font-bold text-emerald-600 uppercase tracking-[0.15em] mb-3">
+                          {item.fullTitle}
+                        </p>
+                        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium line-clamp-3">
+                          {item.desc}
+                        </p>
+                      </div>
+                      <div className="p-5 pt-0 mt-auto">
+                        <Link
+                          to={`/produk/${item.id}`}
+                          className="w-full inline-flex items-center justify-center gap-2 py-3 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-black uppercase tracking-widest rounded-xl hover:bg-emerald-600 hover:text-white transition-all duration-300 group/btn">
+                          LIHAT DETAIL
+                          <span className="group-hover/btn:translate-x-1 transition-transform">
+                            →
+                          </span>
+                        </Link>
+                      </div>
+                    </Card>
+                  );
+                })}
           </div>
         </section>
 
