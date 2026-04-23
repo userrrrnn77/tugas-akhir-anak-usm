@@ -25,40 +25,68 @@ const ProductDetail: React.FC = () => {
   // 4. Handle Loading
   if (isLoading) {
     return (
-      <Container className="py-12 animate-pulse">
-        {/* Skeleton Title & Deskripsi */}
-        <div className="mb-12">
-          <div className="h-4 w-24 bg-slate-200 dark:bg-slate-800 rounded mb-8"></div>
-          <div className="h-12 w-2/3 bg-slate-200 dark:bg-slate-800 rounded-xl mb-6"></div>
-          <div className="h-4 w-full bg-slate-200 dark:bg-slate-800 rounded mb-2"></div>
-          <div className="h-4 w-5/6 bg-slate-200 dark:bg-slate-800 rounded mb-2"></div>
-        </div>
+      <Container className="py-20 animate-pulse">
+        <div className="grid lg:grid-cols-12 gap-16 items-start">
+          {/* --- SISI KIRI: SKELETON INFO UTAMA (lg:col-span-7) --- */}
+          <div className="lg:col-span-7">
+            {/* Subheader & Title */}
+            <div className="h-4 w-40 bg-slate-200 dark:bg-slate-800 rounded mb-6"></div>
+            <div className="h-16 md:h-24 w-full bg-slate-200 dark:bg-slate-800 rounded-2xl mb-8"></div>
 
-        <div className="grid gap-12">
-          {[1, 2].map((s) => (
-            <div key={s} className="group">
-              {/* Skeleton Subtitle Line */}
-              <div className="flex items-center gap-4 mb-6">
-                <div className="h-px grow bg-slate-200 dark:bg-slate-800"></div>
-                <div className="h-6 w-32 bg-slate-200 dark:bg-slate-800 rounded italic"></div>
+            {/* Deskripsi */}
+            <div className="space-y-3 mb-12">
+              <div className="h-5 w-full bg-slate-200 dark:bg-slate-800 rounded"></div>
+              <div className="h-5 w-full bg-slate-200 dark:bg-slate-800 rounded"></div>
+              <div className="h-5 w-2/3 bg-slate-200 dark:bg-slate-800 rounded"></div>
+            </div>
+
+            {/* Grid Sections Skeleton */}
+            <div className="grid gap-12">
+              {[1, 2].map((s) => (
+                <div key={s} className="group">
+                  {/* Section Divider & Subtitle */}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="h-px grow bg-slate-200 dark:bg-slate-800"></div>
+                    <div className="h-6 w-32 bg-slate-200 dark:bg-slate-800 rounded-lg italic"></div>
+                  </div>
+
+                  {/* Items Grid */}
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {[1, 2, 3, 4].map((i) => (
+                      <div
+                        key={i}
+                        className="h-24 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 flex items-start p-4 gap-3">
+                        <div className="w-5 h-5 bg-slate-200 dark:bg-slate-800 rounded-full mt-1 shrink-0"></div>
+                        <div className="space-y-2 w-full">
+                          <div className="h-3 w-full bg-slate-200 dark:bg-slate-800 rounded"></div>
+                          <div className="h-3 w-4/5 bg-slate-200 dark:bg-slate-800 rounded"></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* --- SISI KANAN: SKELETON CTA CARD (lg:col-span-5) --- */}
+          <div className="lg:col-span-5 lg:sticky lg:top-32">
+            <div className="p-8 md:p-12 bg-slate-200 dark:bg-slate-800 rounded-[2.5rem] h-112.5 flex flex-col justify-between">
+              <div>
+                <div className="h-10 w-2/3 bg-slate-300 dark:bg-slate-700 rounded-xl mb-6"></div>
+                <div className="space-y-3">
+                  <div className="h-4 w-full bg-slate-300 dark:bg-slate-700 rounded"></div>
+                  <div className="h-4 w-full bg-slate-300 dark:bg-slate-700 rounded"></div>
+                  <div className="h-4 w-4/5 bg-slate-300 dark:bg-slate-700 rounded"></div>
+                </div>
               </div>
 
-              {/* Skeleton Grid Items */}
-              <div className="grid sm:grid-cols-2 gap-4">
-                {[1, 2, 3, 4].map((i) => (
-                  <div
-                    key={i}
-                    className="h-20 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 flex items-center p-4 gap-3">
-                    <div className="w-5 h-5 bg-slate-200 dark:bg-slate-800 rounded-full shrink-0"></div>
-                    <div className="space-y-2 w-full">
-                      <div className="h-3 w-full bg-slate-200 dark:bg-slate-800 rounded"></div>
-                      <div className="h-3 w-2/3 bg-slate-200 dark:bg-slate-800 rounded"></div>
-                    </div>
-                  </div>
-                ))}
+              <div className="space-y-6">
+                <div className="h-16 w-full bg-slate-300 dark:bg-slate-700 rounded-2xl"></div>
+                <div className="h-3 w-32 bg-slate-300 dark:bg-slate-700 rounded mx-auto"></div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </Container>
     );

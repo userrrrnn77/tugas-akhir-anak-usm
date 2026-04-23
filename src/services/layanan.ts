@@ -7,7 +7,7 @@ import api, { type ResponseBre } from "../api/axios";
 // =========================
 
 export interface product {
-  id: string
+  id: string;
   title: string;
   fullTitle: string;
   desc: string;
@@ -46,7 +46,7 @@ export const getDetailProductById = (id: string) =>
 // =========================
 
 export interface CreateBaitulMaal {
-  id?:string
+  id?: string;
   title?: string;
   tagline?: string;
   description?: string;
@@ -81,4 +81,21 @@ export const getAllGallery = () => api.get<ResponseBre>("/gallery");
 
 // =========================
 // Gallery End
+// =========================
+
+// =========================
+// Carousel Start
+// =========================
+
+export interface ICarousel {
+  _id: string;
+  image: string;
+  title: string;
+  publicId: string;
+}
+
+export const getCarousel = () => api.get<ResponseBre>("/carousel");
+
+// =========================
+// Carousel Start
 // =========================

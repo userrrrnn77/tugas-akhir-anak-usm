@@ -1,11 +1,12 @@
 // src/store/useLayananStore.ts
 import { create } from "zustand";
 import * as layanan from "../services/layanan";
-import { 
-  type product, 
-  type productDetail, 
-  type CreateBaitulMaal, 
-  type gallery 
+import {
+  type product,
+  type productDetail,
+  type CreateBaitulMaal,
+  type gallery,
+  type ICarousel,
 } from "../services/layanan";
 
 // Toak (Toast) buat pengumuman, ganti isinya pake library toast lu ntar
@@ -19,7 +20,8 @@ interface LayananState {
   activeProductDetail: productDetail | null;
   programs: CreateBaitulMaal[];
   galleries: gallery[];
-  
+  carousels: ICarousel[];
+
   // UI State
   isLoading: boolean;
   error: string | null;
@@ -29,6 +31,7 @@ interface LayananState {
   fetchDetailProduct: (id: string) => Promise<void>;
   fetchAllPrograms: () => Promise<void>;
   fetchAllGalleries: () => Promise<void>;
+  fetchAllCarousel: () => Promise<void>;
 }
 
 const useLayananStore = create<LayananState>((set) => ({
@@ -36,6 +39,7 @@ const useLayananStore = create<LayananState>((set) => ({
   activeProductDetail: null,
   programs: [],
   galleries: [],
+  carousels: [],
   isLoading: false,
   error: null,
 
@@ -60,7 +64,10 @@ const useLayananStore = create<LayananState>((set) => ({
     set({ isLoading: true, error: null });
     try {
       const response = await layanan.getDetailProductById(id);
-      set({ activeProductDetail: response.data.data as productDetail, isLoading: false });
+      set({
+        activeProductDetail: response.data.data as productDetail,
+        isLoading: false,
+      });
     } catch (err: unknown) {
       let msg = "Detail produk error, mbot!";
       if (err instanceof Error) msg = err.message;
@@ -74,7 +81,10 @@ const useLayananStore = create<LayananState>((set) => ({
     set({ isLoading: true, error: null });
     try {
       const response = await layanan.getAllProgram();
-      set({ programs: response.data.data as CreateBaitulMaal[], isLoading: false });
+      set({
+        programs: response.data.data as CreateBaitulMaal[],
+        isLoading: false,
+      });
       toak("Data Baitul Maal aman!");
     } catch (err: unknown) {
       let msg = "Program Baitul Maal kaga mau keluar!";
@@ -96,6 +106,18 @@ const useLayananStore = create<LayananState>((set) => ({
       if (err instanceof Error) msg = err.message;
       set({ error: msg, isLoading: false });
       toak(msg, "error");
+    }
+  },
+
+  fetchAllCarousel: async () => {
+    set({ isLoading: true, error: null });
+    try {
+      const response = await layanan.getCarousel();
+      set({ carousels: response.data.data as ICarousel[], isLoading: false });
+    } catch (err: unknown) {
+      let msg = "Gagal";
+      if (err instanceof Error) msg = err.message;
+      set({ error: msg, isLoading: false });
     }
   },
 }));
