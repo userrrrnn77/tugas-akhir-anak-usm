@@ -1,7 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import Container from "../components/layout/Container";
+import { Copy, Check } from "lucide-react";
 import Title from "../components/common/Title";
 import useLayananStore from "../store/useLayananStore";
+import logoMbuh from "../assets/logo-mbuh.png";
+import { toast } from "sonner";
+import Button from "../components/ui/Button";
 
 const BaitulMaal: React.FC = () => {
   // --- STATE & REF (THE WIZARD MODAL LOGIC) ---
@@ -9,6 +13,9 @@ const BaitulMaal: React.FC = () => {
   const [modalContent, setModalContent] = useState<string>("");
   const [modalType, setModalType] = useState<"video" | "image">("video");
   const modalRef = useRef<HTMLDivElement>(null);
+
+  const [copied, setCopied] = useState(false);
+  const noRek = "4455559998";
 
   // 1. Ambil data programs dan fungsinya langsung dari Store
   const { programs, fetchAllPrograms, isLoading } = useLayananStore();
@@ -26,6 +33,13 @@ const BaitulMaal: React.FC = () => {
     }
   };
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(noRek);
+    setCopied(true);
+    toast.success("No. Rekening Berhasil Dicopas, Bre!"); // Pake toast lu yang tadi
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div className="py-24 bg-slate-50 dark:bg-slate-950 min-h-screen relative selection:bg-emerald-500 selection:text-white">
       <Title>Baitul Maal | Mitra Hasanah</Title>
@@ -39,11 +53,19 @@ const BaitulMaal: React.FC = () => {
               Social & Spiritual Responsibility
             </span>
           </div>
-          <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-[0.9] uppercase italic">
-            Baitul Maal <br />
-            <span className="text-secondary-500 dark:text-emerald-600 underline decoration-emerald-500/30">
-              Hasanah.
+          <h1 className="flex flex-col tracking-tighter leading-none uppercase italic">
+            {/* ATAS: GEDE BANGET, SAVAGE! */}
+            <span className="text-4xl md:text-7xl font-black text-slate-900 dark:text-white">
+              Baitul Maal
             </span>
+
+            {/* BAWAH: KECIL, RAPI, WANGI */}
+            <span className="text-xl md:text-2xl font-bold text-secondary-500 dark:text-emerald-600 tracking-[0.2em] md:tracking-[0.5em] mt-2 ml-1">
+              Berkah Mitra Hasanah
+            </span>
+
+            {/* Garis Dekorasi biar kaga polosan banget, memek! */}
+            <div className="h-2 w-32 bg-emerald-500/30 mt-4 rounded-full mb-10"></div>
           </h1>
           {/* HEADER SECTION WRAPPER */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
@@ -234,30 +256,70 @@ const BaitulMaal: React.FC = () => {
         </div>
 
         {/* CTA SECTION */}
-        <div className="mt-56 p-12 md:p-24 bg-slate-900 rounded-[4rem] text-center relative overflow-hidden border border-white/5">
+        <div className="mt-56 p-8 md:p-24 bg-slate-900 rounded-[4rem] text-center relative overflow-hidden border border-white/5">
+          {/* Background Glows */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/20 rounded-full -mr-32 -mt-32 blur-[120px]"></div>
-          <div className="relative z-10">
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-600/10 rounded-full -ml-32 -mb-32 blur-[100px]"></div>
+
+          <div className="relative z-10 flex flex-col items-center">
+            {/* LOGO MBUH - Gue taro atas biar dapet spotlight! */}
+            <img
+              src={logoMbuh}
+              alt="Logo"
+              className="relative z-10 h-28 md:h-32 w-auto object-contain drop-shadow-[0_0_35px_rgba(16,185,129,0.4)] hover:scale-110 transition-transform duration-500 ease-out cursor-pointer mb-10"
+            />
+
             <div className="mb-10 flex flex-col items-center">
-              <span className="text-secondary-500 dark:text-emerald-500 font-black text-sm md:text-lg uppercase tracking-[0.4em] italic mb-4">
-                "Melahirkan Amal Sholeh disetiap peristiwa"
+              <span className="text-emerald-500 font-black text-sm md:text-lg uppercase tracking-[0.4em] italic mb-4">
+                Salurkan ZISWAF Anda Melalui:
               </span>
-              <div className="h-px w-24 bg-emerald-500/30"></div>
+              <h3 className="text-white text-xl md:text-2xl font-bold uppercase tracking-tight">
+                ULAZ MKU BERKAH MITRA HASANAH UMMAT SEJAHTERA
+              </h3>
+              <div className="h-px w-24 bg-emerald-500/30 mt-6"></div>
             </div>
 
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter uppercase italic leading-[0.8]">
-              Siap Menjadi <br />{" "}
-              <span className="text-emerald-500 text-6xl md:text-9xl tracking-tighter">
-                BAGIAN BAIK?
-              </span>
-            </h2>
-            <p className="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed italic">
-              "Setiap rupiah yang Anda titipkan adalah nafas baru bagi mereka
-              yang membutuhkan. Transparan, tepat sasaran, dan mengalirkan
-              keberkahan yang tak terputus."
-            </p>
-            <button className="bg-emerald-600 text-white px-16 py-6 rounded-2xl font-black text-xl hover:bg-emerald-500 hover:scale-105 transition-all shadow-[0_20px_50px_rgba(16,185,129,0.3)] uppercase italic tracking-tighter group">
+            <div className="bg-slate-800/50 backdrop-blur-xl p-8 rounded-4xl border border-white/10 w-full max-w-xl mb-12">
+              <p className="text-slate-400 uppercase text-xs font-black tracking-widest mb-4">
+                Rekening ZISWAF
+              </p>
+
+              {/* PLACEHOLDER LOGO BSI - Lu ganti link gambarnya ntar! */}
+              <div className="flex flex-col items-center gap-4">
+                <div className="h-12 w-32 rounded-lg flex items-center justify-center overflow-hidden">
+                  {/* Pake placeholder dulu, ntar lu ganti img logo BSI asli bre */}
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Bank_Syariah_Indonesia.svg/960px-Bank_Syariah_Indonesia.svg.png"
+                    alt=""
+                  />
+                </div>
+
+                <div className="flex flex-col items-center">
+                  <div
+                    onClick={handleCopy}
+                    className="group cursor-pointer flex items-center gap-4 bg-slate-950 px-8 py-4 rounded-2xl border border-emerald-500/20 hover:border-emerald-500 transition-all active:scale-95">
+                    <span className="text-3xl md:text-5xl font-black text-white tracking-widest">
+                      {noRek}
+                    </span>
+                    {copied ? (
+                      <Check className="text-emerald-500" size={32} />
+                    ) : (
+                      <Copy
+                        className="text-slate-500 group-hover:text-emerald-500"
+                        size={32}
+                      />
+                    )}
+                  </div>
+                  <p className="mt-4 text-emerald-500 font-bold uppercase text-lg tracking-tighter">
+                    YMKU ULAZ BERKAH MITRA HASANAH
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <Button className="bg-emerald-600 text-white px-16 py-6 rounded-2xl font-black text-xl hover:bg-emerald-500 hover:scale-105 transition-all shadow-[0_20px_50px_rgba(16,185,129,0.3)] uppercase italic tracking-tighter group">
               <span className="flex items-center gap-3">
-                Tunaikan Sekarang
+                Konfirmasi via WhatsApp
                 <svg
                   className="w-6 h-6 group-hover:translate-x-2 transition-transform"
                   fill="none"
@@ -271,7 +333,7 @@ const BaitulMaal: React.FC = () => {
                   />
                 </svg>
               </span>
-            </button>
+            </Button>
           </div>
         </div>
       </Container>

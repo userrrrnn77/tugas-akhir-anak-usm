@@ -35,18 +35,21 @@ const CompanyBrief: React.FC = () => {
           <div className="flex flex-col items-center text-center">
             <div className="flex items-center gap-4 mb-4">
               <div className="h-0.5 w-8 bg-emerald-500"></div>
-              <span className="text-emerald-500 font-black text-xs uppercase tracking-[0.5em]">
+              <span className="text-emerald-500 font-black text-xs tracking-[0.5em]">
                 Our Identity
               </span>
               <div className="h-0.5 w-8 bg-emerald-500"></div>
             </div>
 
-            <h2 className="text-2xl md:text-4xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight max-w-4xl">
-              Kspps Mitra usaha umat, <br className="hidden md:block" />
+            <h2 className="text-2xl md:text-4xl font-black text-slate-900 dark:text-white italic tracking-tighter leading-tight max-w-4xl">
+              Kspps Berkah Mitra Hasanah
+              <br className="hidden md:block" />
               <span className="text-emerald-600">
-                cepat, mudah, amanah,
-              </span>{" "}
-              dan fleksibel
+                Mitra usaha umat <br className="hidden md:block" />
+              </span>
+              Mitra pemberdayaan umat <br className="hidden md:block" />
+              <span className="text-emerald-600">Cepat, Mudah, Amanah,</span> &
+              Fleksibel
             </h2>
 
             <div className="mt-6 h-1 w-20 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
