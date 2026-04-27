@@ -73,6 +73,7 @@ export const getProgramById = (id: string) =>
 export interface gallery {
   _id: string;
   src: string;
+  type: "image" | "video"
   category: string;
   publicId: string;
 }
