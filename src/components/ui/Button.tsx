@@ -2,7 +2,6 @@ import React from "react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-// Fungsi sakti biar class Tailwind kaga jembot, Bre!
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -22,7 +21,6 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
-  // Variant Styling - Ijo khas KSPPS Mitra Hasanah, bgsd! 😹
   const variants = {
     primary:
       "bg-emerald-600 text-white hover:bg-emerald-700 shadow-md active:scale-95",

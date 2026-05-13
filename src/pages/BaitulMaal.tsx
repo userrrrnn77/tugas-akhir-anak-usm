@@ -64,7 +64,6 @@ const BaitulMaal: React.FC = () => {
               Berkah Mitra Hasanah
             </span>
 
-            {/* Garis Dekorasi biar kaga polosan banget, memek! */}
             <div className="h-2 w-32 bg-emerald-500/30 mt-4 rounded-full mb-10"></div>
           </h1>
           {/* HEADER SECTION WRAPPER */}

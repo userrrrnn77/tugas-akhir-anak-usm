@@ -9,7 +9,7 @@ const ScrollToTop = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  return null; // Komponen ini kaga ngerender apa-apa, cuma logic doang, bgsd!
+  return null; 
 };
 
 export default ScrollToTop;

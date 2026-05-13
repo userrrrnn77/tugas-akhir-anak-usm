@@ -20,7 +20,7 @@ export const StepDataPribadi = () => {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
       <Input
         label="Nama Lengkap (Sesuai KTP)"
-        placeholder="Contoh: Bagas Coding"
+        placeholder="Contoh: Bagas Sanjaya"
         value={formData.fullName}
         onChange={(e) => updateField("fullName", e.target.value)}
       />

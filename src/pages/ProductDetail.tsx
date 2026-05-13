@@ -97,10 +97,10 @@ const ProductDetail: React.FC = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 p-6 text-center">
         <h1 className="text-3xl font-black text-slate-900 uppercase italic mb-4">
-          Produk Ga Ketemu, Bre! ☕
+          Produk Ga Ketemu, Kak! ☕
         </h1>
         <Button onClick={() => navigate(-1)} variant="primary">
-          <ChevronLeft className="mr-2" /> Balik Aja Bgsd
+          <ChevronLeft className="mr-2" /> Balik Aja Yuk Kak
         </Button>
       </div>
     );

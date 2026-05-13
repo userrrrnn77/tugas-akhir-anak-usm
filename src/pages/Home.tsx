@@ -41,7 +41,7 @@ const Home: React.FC = () => {
   const handleAction = async () => {
     if (currentStep === steps.length) {
       if (!formData.isAgreed) {
-        return toast.error("Ceklis dulu persetujuannya, taik!");
+        return toast.error("Ceklis dulu persetujuannya, Kak");
       }
 
       const result = await submitForm();

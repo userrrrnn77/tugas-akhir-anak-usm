@@ -5,7 +5,7 @@ import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
 import { useRegistrationStore } from "../store/useRegistrationStore";
 import Title from "../components/common/Title";
-import { CheckCircle2, MessageSquare, Home } from "lucide-react"; // Pake Lucide biar cakep, bgsd!
+import { CheckCircle2, MessageSquare, Home } from "lucide-react"; 
 
 const Success: React.FC = () => {
   const navigate = useNavigate();
@@ -29,7 +29,6 @@ const Success: React.FC = () => {
       <Container>
         <div className="max-w-2xl mx-auto">
           <Card className="relative overflow-hidden border-none shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.3)] bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-center">
-            {/* Aksesoris Background dikit biar kaga kaku, jembot! */}
             <div className="absolute top-0 left-0 w-full h-2 bg-emerald-500"></div>
 
             <div className="mb-8 flex justify-center">

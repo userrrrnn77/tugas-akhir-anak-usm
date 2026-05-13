@@ -24,7 +24,6 @@ const About: React.FC = () => {
     <div className="py-24 bg-slate-50 dark:bg-slate-950 min-h-screen">
       <Title>Tentang Kami | Mitra Hasanah</Title>
       <Container>
-        {/* Header - Visi & Misi Strategis  tolong benernin ini bre, dia minta dikasih gambar kantor utama disini njir taik */}
 
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center mb-28">
           {/* Sisi Kiri: Narasi */}
@@ -46,7 +45,6 @@ const About: React.FC = () => {
             </div>
           </div>
 
-          {/* Sisi Kanan: Gambar Kantor (Permintaan Anak USM, Taik!) */}
           <div className="lg:w-1/2 order-1 lg:order-2 w-full">
             <div className="relative group">
               {/* Dekorasi Belakang Gambar */}
@@ -177,7 +175,6 @@ const About: React.FC = () => {
               </div>
             </div>
             <div className=" p-12 flex flex-col justify-between relative min-h-125 overflow-hidden">
-              {/* MAPS BACKGROUND - INI BIAR RESPONSIF & BISA DARK MODE, JEMBOT! */}
               <div className="absolute inset-0 z-0 overflow-hidden">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.4730813059473!2d110.47807967605245!3d-6.953387668077527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70f2dde5f664e7%3A0x3bd37b19580d223!2sBmt%20Mitra%20Hasanah!5e0!3m2!1sid!2sid!4v1775757716399!5m2!1sid!2sid"
@@ -185,7 +182,6 @@ const About: React.FC = () => {
                   height="100%"
                   className="w-full h-full border-0 opacity-40 grayscale contrast-125 dark:invert dark:hue-rotate-180 transition-all duration-700"
                   loading="lazy"></iframe>
-                {/* Overlay biar tulisan tetep kebaca, kaga ketutup peta, taik! */}
                 {/* <div className="absolute inset-0 bg-emerald-600/60 dark:bg-slate-900/40"></div> */}
               </div>
 

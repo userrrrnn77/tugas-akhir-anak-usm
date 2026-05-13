@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Container from "./Container";
 import Button from "../ui/Button";
-import { Menu, X, Sun, Moon } from "lucide-react"; // Import icon jembot! 🚬
+import { Menu, X, Sun, Moon } from "lucide-react"; 
 import { useTheme } from "../../hooks/useTheme";
 import logoNav from "../../assets/logoBMH.png";
 
@@ -111,7 +111,7 @@ const Navbar: React.FC = () => {
                     if (el) {
                       el.scrollIntoView({ behavior: "smooth" });
                     } else {
-                      console.log("Elemen #register KAGA ADA bgsd!");
+                      console.log("Elemen #register KAGA ADA!");
                     }
                   }
                 }}>

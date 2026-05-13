@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"; // 1. Tambah useState, bgsd!
+import React, { useEffect, useState } from "react"; 
 import Container from "../components/layout/Container";
 import Card from "../components/ui/Card";
 import { X } from "lucide-react"; // 2. Buat tombol close modal
@@ -210,7 +210,7 @@ const Products: React.FC = () => {
             </button>
             <div
               className="relative max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl shadow-2xl animate-in zoom-in duration-300"
-              onClick={(e) => e.stopPropagation()} // Biar kaga close pas klik gambarnya, taik!
+              onClick={(e) => e.stopPropagation()} 
             >
               <img
                 src={selectedImg}
