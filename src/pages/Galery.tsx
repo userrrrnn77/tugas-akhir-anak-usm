@@ -13,7 +13,6 @@ const Galery = () => {
     fetchAllGalleries();
   }, [fetchAllGalleries]);
 
-  // Pisahin yang foto ama yang video, mbot!
   const photos = galleries.filter(
     (item) => item.type === "image" || !item.type,
   );
