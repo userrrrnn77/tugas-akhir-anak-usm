@@ -1,0 +1,21 @@
+FLOW.txt
+
+------------------------------------------------------------------------
+🖥️ KELOMPOK 2: FRONTEND WEBPAGE UTAMA (KSPPS MITRA BERKAH HASANAH)
+------------------------------------------------------------------------
+1. Buka jendela terminal atau CMD BARU.
+2. Masuk ke dalam folder 'kspps-mitra-berkah-hassanah'.
+3. Install semua library dengan mengetik perintah:
+   npm install
+4. Jalankan server lokal webpage dengan mengetik perintah:
+   npm run dev
+5. Buka link yang muncul di browser, biasanya: http://localhost:5173
+========================================================================
+📝 CATATAN PENTING KELOMPOK:
+- Sebelum dikumpulkan ke dosen, silakan buka file 'package.json' di 
+  KETIGA folder tersebut, lalu ganti bagian properti "author":
+  "nama-kelompok": "Ganti Nama Kelompok Kalian"
+  "name": "Ganti Nama Anggota Yang Mengerjakan"
+========================================================================
+DEVELOPED BY: Bre Corp. 😎🚀
+========================================================================
