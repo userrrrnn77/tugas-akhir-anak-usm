@@ -7,31 +7,50 @@ import {
   type CreateBaitulMaal,
   type gallery,
   type ICarousel,
+  type IUploadTrf, 
 } from "../services/layanan";
 
-// Toak (Toast) buat pengumuman, ganti isinya pake library toast lu ntar
 const toak = (msg: string, type: "success" | "error" = "success") => {
   console.log(`[TOAK ${type.toUpperCase()}]: ${msg}`);
 };
 
+export interface INews {
+  _id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  images: string[];
+  category: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface INewsDetail extends INews {
+  content: string;
+}
+
 interface LayananState {
-  // State Data
   products: product[];
   activeProductDetail: productDetail | null;
   programs: CreateBaitulMaal[];
   galleries: gallery[];
   carousels: ICarousel[];
 
-  // UI State
+  newsList: INews[];
+  activeNewsDetail: INewsDetail | null;
+
   isLoading: boolean;
   error: string | null;
 
-  // Actions
   fetchAllProducts: () => Promise<void>;
   fetchDetailProduct: (id: string) => Promise<void>;
   fetchAllPrograms: () => Promise<void>;
   fetchAllGalleries: () => Promise<void>;
   fetchAllCarousel: () => Promise<void>;
+
+  fetchAllNews: () => Promise<void>;
+  fetchNewsDetailBySlug: (slug: string) => Promise<void>;
+  uploadBuktiTransfer: (data: IUploadTrf) => Promise<boolean>;
 }
 
 const useLayananStore = create<LayananState>((set) => ({
@@ -40,26 +59,27 @@ const useLayananStore = create<LayananState>((set) => ({
   programs: [],
   galleries: [],
   carousels: [],
+
+  newsList: [],
+  activeNewsDetail: null,
+
   isLoading: false,
   error: null,
 
-  // 1. Ambil Semua Produk
   fetchAllProducts: async () => {
     set({ isLoading: true, error: null });
     try {
       const response = await layanan.getAllProduct();
-      // TypeScript otomatis tau response.data.data itu array of product
       set({ products: response.data.data as product[], isLoading: false });
       toak("Produk berhasil diangkut!");
     } catch (err: unknown) {
-      let msg = "Gagal ambil produk, Bre!";
+      let msg = "Gagal mengambil data produk, Bre.";
       if (err instanceof Error) msg = err.message;
       set({ error: msg, isLoading: false });
       toak(msg, "error");
     }
   },
 
-  // 2. Ambil Detail Produk (Pake Interface productDetail lu)
   fetchDetailProduct: async (id: string) => {
     set({ isLoading: true, error: null });
     try {
@@ -69,14 +89,13 @@ const useLayananStore = create<LayananState>((set) => ({
         isLoading: false,
       });
     } catch (err: unknown) {
-      let msg = "Detail produk error, mbot!";
+      let msg = "Detail produk gagal dimuat, Bre.";
       if (err instanceof Error) msg = err.message;
       set({ error: msg, isLoading: false });
       toak(msg, "error");
     }
   },
 
-  // 3. Ambil Semua Program Baitul Maal
   fetchAllPrograms: async () => {
     set({ isLoading: true, error: null });
     try {
@@ -87,22 +106,21 @@ const useLayananStore = create<LayananState>((set) => ({
       });
       toak("Data Baitul Maal aman!");
     } catch (err: unknown) {
-      let msg = "Program Baitul Maal kaga mau keluar!";
+      let msg = "Program Baitul Maal gagal dimuat.";
       if (err instanceof Error) msg = err.message;
       set({ error: msg, isLoading: false });
       toak(msg, "error");
     }
   },
 
-  // 4. Ambil Semua Galeri
   fetchAllGalleries: async () => {
     set({ isLoading: true, error: null });
     try {
       const response = await layanan.getAllGallery();
       set({ galleries: response.data.data as gallery[], isLoading: false });
-      toak("Galeri foto ready!");
+      toak("Galeri foto siap ditampilkan!");
     } catch (err: unknown) {
-      let msg = "Gagal loading galeri!";
+      let msg = "Gagal memuat galeri foto.";
       if (err instanceof Error) msg = err.message;
       set({ error: msg, isLoading: false });
       toak(msg, "error");
@@ -115,9 +133,58 @@ const useLayananStore = create<LayananState>((set) => ({
       const response = await layanan.getCarousel();
       set({ carousels: response.data.data as ICarousel[], isLoading: false });
     } catch (err: unknown) {
-      let msg = "Gagal";
+      let msg = "Gagal memuat data carousel.";
       if (err instanceof Error) msg = err.message;
       set({ error: msg, isLoading: false });
+    }
+  },
+
+  fetchAllNews: async () => {
+    set({ isLoading: true, error: null });
+    try {
+      const response = await layanan.getBerita();
+      set({ newsList: response.data.data as INews[], isLoading: false });
+      toak("Daftar berita berhasil dimuat, Bre!");
+    } catch (err: unknown) {
+      let msg = "Gagal memuat daftar berita terbaru.";
+      if (err instanceof Error) msg = err.message;
+      set({ error: msg, isLoading: false });
+      toak(msg, "error");
+    }
+  },
+
+  fetchNewsDetailBySlug: async (slug: string) => {
+    set({ isLoading: true, error: null });
+    try {
+      const response = await layanan.getBeritaBySlug(slug);
+      set({
+        activeNewsDetail: response.data.data as INewsDetail,
+        isLoading: false,
+      });
+    } catch (err: unknown) {
+      let msg = "Gagal memuat detail berita tersebut.";
+      if (err instanceof Error) msg = err.message;
+      set({ error: msg, isLoading: false });
+      toak(msg, "error");
+    }
+  },
+
+  uploadBuktiTransfer: async (data: IUploadTrf) => {
+    set({ isLoading: true, error: null });
+    try {
+      await layanan.uploadTransfer(data);
+      set({ isLoading: false });
+      toak(
+        "Bukti transaksi berhasil diunggah secara aman, mohon tunggu verifikasi admin.",
+        "success",
+      );
+      return true;
+    } catch (err: unknown) {
+      let msg = "Gagal mengunggah bukti transaksi.";
+      if (err instanceof Error) msg = err.message;
+      set({ error: msg, isLoading: false });
+      toak(msg, "error");
+      return false;
     }
   },
 }));

@@ -13,6 +13,9 @@ import Galery from "./pages/Galery";
 import BaitulMaal from "./pages/BaitulMaal";
 import { Toaster } from "sonner";
 import { useEffect } from "react";
+import News from "./pages/News";
+import NewsDetail from "./pages/NewsDetail";
+import UploadBukti from "./pages/UploadBukti";
 
 const { HelmetProvider } = pkg;
 
@@ -23,7 +26,7 @@ const App = () => {
         document
           .getElementById("register")
           ?.scrollIntoView({ behavior: "smooth" });
-      }, 500); // Kasih nafas dikit buat render
+      }, 500);
     }
   }, []);
 
@@ -43,6 +46,9 @@ const App = () => {
               <Route path="/galery" element={<Galery />} />
               <Route path="/baitul-maal" element={<BaitulMaal />} />
               <Route path="/produk/:id" element={<ProductDetail />} />
+              <Route path="/upload-transaction" element={<UploadBukti />} />
+              <Route path="/news" element={<News />} />
+              <Route path="/news/:slug" element={<NewsDetail />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </main>

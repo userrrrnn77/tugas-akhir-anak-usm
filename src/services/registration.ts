@@ -1,6 +1,6 @@
 import api from "../api/axios";
 
-interface RegistrationPayload {
+export interface RegistrationPayload {
   fullName: string;
   birthPlace: string;
   birthDate: Date;

@@ -7,7 +7,12 @@ import ProductSection from "../components/layout/ProductSection";
 import Title from "../components/common/Title";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import CompanyBrief from "../components/layout/CompanyBrief";
-import { StepDataPribadi, StepPekerjaan, StepKonfirmasi } from "./Steps";
+import {
+  StepDataPribadi,
+  StepPekerjaan,
+  StepKonfirmasi,
+  BarcodeAndNorek,
+} from "./Steps";
 import { useRegistrationStore } from "../store/useRegistrationStore";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +20,7 @@ import VisionMision from "../components/layout/VisionMision";
 import useLayananStore from "../store/useLayananStore";
 
 const Home: React.FC = () => {
-  const [activeSlide, setActiveSlide] = useState(0); // State Carousel
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const navigate = useNavigate();
 
@@ -36,7 +41,7 @@ const Home: React.FC = () => {
     );
   }, [carousels.length]);
 
-  const steps = ["Data Diri", "Pekerjaan", "Selesai"];
+  const steps = ["Data Diri", "Pekerjaan", "Ahli Waris", "Selesai"];
 
   const handleAction = async () => {
     if (currentStep === steps.length) {
@@ -47,7 +52,20 @@ const Home: React.FC = () => {
       const result = await submitForm();
       if (result.success) {
         toast.success(result.message);
-        navigate("/success");
+
+        const dataObj = result as Record<string, unknown>;
+        const extractedId =
+          typeof dataObj.registeredId === "string"
+            ? dataObj.registeredId
+            : typeof dataObj.id === "string"
+              ? dataObj.id
+              : "";
+
+        navigate("/upload-transaction", {
+          state: {
+            state: { registrationId: extractedId },
+          },
+        });
       } else {
         toast.error(result.message);
       }
@@ -148,6 +166,7 @@ const Home: React.FC = () => {
               {currentStep === 1 && <StepDataPribadi />}
               {currentStep === 2 && <StepPekerjaan />}
               {currentStep === 3 && <StepKonfirmasi />}
+              {currentStep === 4 && <BarcodeAndNorek />}
             </div>
 
             <div className="mt-12 flex justify-between border-t border-slate-100 dark:border-slate-800 pt-8">

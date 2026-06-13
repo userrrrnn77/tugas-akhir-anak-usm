@@ -17,10 +17,13 @@ const BaitulMaal: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const noRek = "4455559998";
 
-  // 1. Ambil data programs dan fungsinya langsung dari Store
   const { programs, fetchAllPrograms, isLoading } = useLayananStore();
 
-  // 2. useEffect cuma buat manggil perintah tarik data
+  const waNumber = "6282138089198"; 
+  const message = encodeURIComponent(
+    `Halo Admin KSPPS Mitra Hasanah, saya mau konfirmasi donasi ZISWAF yang baru saja saya transfer melalui rekening BSI. Mohon dibantu untuk proses pencatatannya ya, Syukron! 🙏✨`,
+  );
+
   useEffect(() => {
     fetchAllPrograms();
   }, [fetchAllPrograms]);
@@ -36,7 +39,7 @@ const BaitulMaal: React.FC = () => {
   const handleCopy = () => {
     navigator.clipboard.writeText(noRek);
     setCopied(true);
-    toast.success("No. Rekening Berhasil Dicopas, Bre!"); // Pake toast lu yang tadi
+    toast.success("No. Rekening Berhasil Dicopy"); 
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -273,7 +276,7 @@ const BaitulMaal: React.FC = () => {
                 Salurkan ZISWAF Anda Melalui:
               </span>
               <h3 className="text-white text-xl md:text-2xl font-bold uppercase tracking-tight">
-                ULAZ MKU BERKAH MITRA HASANAH UMMAT SEJAHTERA
+                ULAZ MKU BERKAH MITRA HASANAH
               </h3>
               <div className="h-px w-24 bg-emerald-500/30 mt-6"></div>
             </div>
@@ -316,7 +319,14 @@ const BaitulMaal: React.FC = () => {
               </div>
             </div>
 
-            <Button className="bg-emerald-600 text-white px-16 py-6 rounded-2xl font-black text-xl hover:bg-emerald-500 hover:scale-105 transition-all shadow-[0_20px_50px_rgba(16,185,129,0.3)] uppercase italic tracking-tighter group">
+            <Button
+              onClick={() =>
+                window.open(
+                  `https://wa.me/${waNumber}?text=${message}`,
+                  "_blank",
+                )
+              }
+              className="bg-emerald-600 text-white px-16 py-6 rounded-2xl font-black text-xl hover:bg-emerald-500 hover:scale-105 transition-all shadow-[0_20px_50px_rgba(16,185,129,0.3)] uppercase italic tracking-tighter group">
               <span className="flex items-center gap-3">
                 Konfirmasi via WhatsApp
                 <svg

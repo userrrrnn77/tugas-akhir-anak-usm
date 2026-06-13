@@ -13,7 +13,7 @@ export interface product {
   desc: string;
   icon: string;
   image: string;
-  publicId: string; // <--- WAJIB TAMBAHIN INI, BRE!
+  publicId: string;
   category: "simpanan" | "pembiayaan";
 }
 
@@ -73,7 +73,7 @@ export const getProgramById = (id: string) =>
 export interface gallery {
   _id: string;
   src: string;
-  type: "image" | "video"
+  type: "image" | "video";
   category: string;
   publicId: string;
 }
@@ -98,5 +98,34 @@ export interface ICarousel {
 export const getCarousel = () => api.get<ResponseBre>("/carousel");
 
 // =========================
-// Carousel Start
+// Carousel End
+// =========================
+
+// =========================
+// Upload Bukti Transfer Start
+// =========================
+
+export interface IUploadTrf {
+  registrationId: string;
+  buktiTransfer: string;
+  buktiKTP: string;
+}
+
+export const uploadTransfer = (data: IUploadTrf) =>
+  api.post<ResponseBre>("/transaction/uploadTransaction", data);
+
+// =========================
+// Upload Bukti Transfer End
+// =========================
+
+// =========================
+// Get News Start
+// =========================
+
+export const getBerita = () => api.get<ResponseBre>("/news");
+export const getBeritaBySlug = (slug: string) =>
+  api.get<ResponseBre>(`/news/${slug}`);
+
+// =========================
+// Get News End
 // =========================

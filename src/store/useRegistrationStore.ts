@@ -141,8 +141,6 @@ export const useRegistrationStore = create<RegistrationStore>()(
           const response = await postRegistration(payload);
           const responseData = response.data as ApiResponse;
 
-          get().resetForm();
-
           return {
             success: true,
             message: responseData.message || "Pendaftaran Berhasil, Bre!",
