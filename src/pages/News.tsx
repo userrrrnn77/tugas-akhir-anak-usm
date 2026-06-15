@@ -122,7 +122,7 @@ const News: React.FC = () => {
 
   const navigate = useNavigate()
 
-  const categories = ["Semua", "Berita Koperasi", "Artikel", "Pengumuman"];
+  const categories = ["Semua", "Berita Koperasi", "Artikel", "Info Terkini"];
 
   useEffect(() => {
     fetchAllNews();
@@ -130,10 +130,9 @@ const News: React.FC = () => {
 
   const handleReadMore = (slug: string) => {
     toast.info(`Membuka artikel: ${slug}`);
-    navigate(`/news/${slug}`) //nyusrug aja sekalian taik, 
+    navigate(`/news/${slug}`) 
   };
 
-  // Filter lokal di sisi client untuk keindahan interaksi UI
   const filteredNews = newsList.filter((item) => {
     const matchesSearch =
       item.title.toLowerCase().includes(searchKeyword.toLowerCase()) ||
