@@ -11,7 +11,12 @@ import {
   INCOME_OPTIONS,
 } from "../constants/registration";
 import { useRegistrationStore } from "../store/useRegistrationStore";
-import { Copy, QrCode, Wallet, Info } from "lucide-react";
+import {
+  Copy,
+  // QrCode
+  Wallet,
+  Info,
+} from "lucide-react";
 import { toast } from "sonner";
 
 // --- STEP 1: DATA PRIBADI ---
@@ -171,8 +176,8 @@ export const BarcodeAndNorek = () => {
   const { formData } = useRegistrationStore();
 
   // Data Sakral BSI KSPPS Berkah Mitra Hasanah
-  const NOREK_BSI = "7245999881";
-  const ATAS_NAMA = "KSPPS BERKAH MITRA HASANAH";
+  const NOREK_BSI = "7125844787";
+  const ATAS_NAMA = "Kspps berkah mitra hasanah meteseh";
 
   const handleCopyNorek = () => {
     navigator.clipboard.writeText(NOREK_BSI);
@@ -195,7 +200,7 @@ export const BarcodeAndNorek = () => {
   };
 
   return (
-    <div className="w-full space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
+    <div className="w-full space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
       {/* ALERT BANNER PETUNJUK */}
       <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-2xl border border-amber-100 dark:border-amber-900/40 flex gap-3 items-start">
         <Info className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
@@ -207,10 +212,10 @@ export const BarcodeAndNorek = () => {
       </div>
 
       {/* TWO COLUMN PREMIUM LAYOUT */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-1 gap-6 items-stretch">
         {/* KOLOM KIRI: DETAIL TRANSFER REKENING BSI */}
         <div className="bg-white dark:bg-dark-card border border-neutral-100 dark:border-neutral-800 p-6 md:p-8 rounded-4xl flex flex-col justify-between shadow-xs">
-          <div className="space-y-4">
+          <div className="space-y-2">
             <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-500 font-black text-xs uppercase tracking-wider">
               <Wallet size={16} />
               <span>Metode Transfer Bank</span>
@@ -247,7 +252,7 @@ export const BarcodeAndNorek = () => {
               <p className="text-xs text-neutral-400 font-medium uppercase tracking-wider">
                 Atas Nama
               </p>
-              <p className="text-sm font-black text-neutral-700 dark:text-neutral-200 uppercase tracking-tight">
+              <p className="text-sm font-black text-neutral-700 dark:text-neutral-200 tracking-tight uppercase">
                 {ATAS_NAMA}
               </p>
             </div>
@@ -278,9 +283,8 @@ export const BarcodeAndNorek = () => {
           </div>
         </div>
 
-        {/* KOLOM KANAN: QRIS / BARCODE PLACEHOLDER VIEWER */}
-        <div className="bg-neutral-50 dark:bg-dark-card border-2 border-dashed border-neutral-200 dark:border-neutral-800 p-6 md:p-8 rounded-4xl flex flex-col items-center justify-center text-center relative overflow-hidden min-h-75">
-          {/* Skenario saat data gambar dari backend belum ada / dikirim */}
+        {/* KOLOM KANAN: QRIS / BARCODE PLACEHOLDER VIEWER TINGGAL UNCOMMENT AJA */}
+        {/* <div className="bg-neutral-50 dark:bg-dark-card border-2 border-dashed border-neutral-200 dark:border-neutral-800 p-6 md:p-8 rounded-4xl flex flex-col items-center justify-center text-center relative overflow-hidden min-h-75">
           <div className="space-y-4 max-w-xs animate-pulse">
             <div className="w-32 h-32 bg-neutral-200 dark:bg-neutral-800 rounded-2xl flex items-center justify-center mx-auto border-4 border-white dark:border-neutral-900 shadow-md">
               <QrCode
@@ -303,13 +307,12 @@ export const BarcodeAndNorek = () => {
             </div>
           </div>
 
-          {/* Skenario Masa Depan (Tinggal un-comment baris di bawah ini kalau gambar QRIS backend lu udah meluncur!) */}
-          {/* <div className="space-y-3">
+          <div className="space-y-3">
             <img src="URL_GAMBAR_QRIS_DARI_BACKEND" className="w-44 h-44 object-contain mx-auto rounded-xl border-4 border-white shadow-md" alt="QRIS Merchant" />
             <p className="text-xs font-bold text-neutral-500">Scan QRIS KSPPS Mitra Hasanah</p>
           </div> 
-          */}
-        </div>
+         
+        </div> */}
       </div>
     </div>
   );
