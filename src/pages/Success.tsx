@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Container from "../components/layout/Container";
 import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
 import { useRegistrationStore } from "../store/useRegistrationStore";
 import Title from "../components/common/Title";
-import { CheckCircle2, MessageSquare, Home } from "lucide-react"; 
+import { CheckCircle2, MessageSquare, Home } from "lucide-react";
 
 const Success: React.FC = () => {
   const navigate = useNavigate();
   const { resetForm, formData } = useRegistrationStore();
+
+  useEffect(() => {}, [formData]);
 
   const handleBack = () => {
     resetForm();
@@ -19,7 +21,7 @@ const Success: React.FC = () => {
   // 🚀 Logic WA Sat-Set: Langsung bawa nama biar CS kaga bingung
   const waNumber = "6282138089198"; // Nomor Genuk sesuai Footer lu tadi
   const message = encodeURIComponent(
-    `Halo Admin KSPPS Mitra Hasanah, saya ${formData.fullName || "Nasabah"}. Saya baru saja melakukan pendaftaran online melalui website. Mohon bantuannya untuk proses verifikasi selanjutnya, Bre! 🙏`,
+    `Halo Admin KSPPS Mitra Hasanah, saya ${formData.fullName || "Nasabah"}. Saya baru saja melakukan pendaftaran online melalui website. Mohon bantuannya untuk proses verifikasi selanjutnya, Kak! 🙏`,
   );
 
   return (

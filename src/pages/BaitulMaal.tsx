@@ -21,7 +21,7 @@ const BaitulMaal: React.FC = () => {
 
   const waNumber = "6282138089198"; 
   const message = encodeURIComponent(
-    `Halo Admin KSPPS Mitra Hasanah, saya mau konfirmasi donasi ZISWAF yang baru saja saya transfer melalui rekening BSI. Mohon dibantu untuk proses pencatatannya ya, Syukron! 🙏✨`,
+    `Halo Admin KSPPS Mitra Hasanah, saya mau konfirmasi donasi yang baru saja saya transfer melalui rekening BSI. Mohon dibantu untuk proses pencatatannya ya, Syukron! 🙏✨`,
   );
 
   useEffect(() => {

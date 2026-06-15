@@ -18,7 +18,7 @@ import { toast } from "sonner";
 const UploadBukti: React.FC = () => {
   const navigate = useNavigate();
   const { uploadBuktiTransfer, isLoading } = useLayananStore();
-  const { formData, resetForm } = useRegistrationStore();
+  const { formData } = useRegistrationStore();
 
   const [ktpFile, setKtpFile] = useState<File | null>(null);
   const [transferFile, setTransferFile] = useState<File | null>(null);
@@ -49,7 +49,7 @@ const UploadBukti: React.FC = () => {
       const isSuccess = await uploadBuktiTransfer(payload);
 
       if (isSuccess) {
-        resetForm();
+        
         navigate("/success");
       }
     } catch (err) {
