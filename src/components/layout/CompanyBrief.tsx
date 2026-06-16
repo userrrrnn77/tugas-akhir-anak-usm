@@ -25,7 +25,17 @@ const CompanyBrief: React.FC = () => {
               </span>
               . Pada 23 Desember 2015, kami bertransformasi menjadi KSPPS untuk
               menyesuaikan dengan regulasi undang-undang perkoperasian syariah
-              guna menghadirkan layanan finansial yang lebih amanah.
+              guna menghadirkan layanan finansial yang lebih amanah. Tanggal
+              <span className="underline decoration-emerald-500 decoration-2 underline-offset-4">
+                {" "}
+                2 juni 2026{" "}
+              </span>
+              melakukan
+              <span className="text-emerald-600">
+                {" "}
+                Peruahan Anggaran Dasar (PAD){" "}
+              </span>
+              dari badan hukum kota semarang menjadi badan hukum jawa tengah.
             </p>
           </div>
         </Container>
