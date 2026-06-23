@@ -21,7 +21,7 @@ const Success: React.FC = () => {
   // 🚀 Logic WA Sat-Set: Langsung bawa nama biar CS kaga bingung
   const waNumber = "6282138089198"; // Nomor Genuk sesuai Footer lu tadi
   const message = encodeURIComponent(
-    `Halo Admin KSPPS Mitra Hasanah, saya ${formData.fullName || "Nasabah"}. Saya baru saja melakukan pendaftaran online melalui website. Mohon bantuannya untuk proses verifikasi selanjutnya, Kak! 🙏`,
+    `Assalamualaikum wr.wb, Admin KSPPS Mitra Hasanah, saya ${formData.fullName || "Nasabah"}. Saya baru saja melakukan pendaftaran online melalui website. Mohon bantuannya untuk proses verifikasi selanjutnya, Kak! 🙏`,
   );
 
   return (

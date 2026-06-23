@@ -18,10 +18,14 @@ import {
   Info,
 } from "lucide-react";
 import { toast } from "sonner";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 // --- STEP 1: DATA PRIBADI ---
 export const StepDataPribadi = () => {
   const { formData, updateField } = useRegistrationStore();
+
+  console.log("default formdata.dob: ", formData.dob);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
@@ -44,12 +48,41 @@ export const StepDataPribadi = () => {
         value={formData.pob}
         onChange={(e) => updateField("pob", e.target.value)}
       />
-      <Input
-        label="Tanggal Lahir"
-        type="date"
-        value={formData.dob}
-        onChange={(e) => updateField("dob", e.target.value)}
-      />
+      <div className="flex flex-col gap-1.5 w-full text-left">
+        <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">
+          Tanggal Lahir
+        </label>
+        <DatePicker
+          selected={
+            formData.dob ? new Date(formData.dob.replace(/-/g, "/")) : null
+          }
+          onChange={(date: Date | null) => {
+            console.log("=== DEBUG DATEPICKER RE ===");
+            console.log("1. Raw Object Lokal :", date);
+
+            if (!date) {
+              updateField("dob", "");
+              return;
+            }
+
+            // JALUR AMANAH: Ambil Tahun, Bulan, Hari murni dari local time laptop lu!
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, "0"); // Bulan berawal dari 0, wajib +1!
+            const day = String(date.getDate()).padStart(2, "0");
+
+            const formattedDate = `${year}-${month}-${day}`;
+            console.log("2. Hasil Fix Lokal  :", formattedDate);
+
+            updateField("dob", formattedDate);
+          }}
+          dateFormat="yyyy-MM-dd"
+          showMonthDropdown
+          showYearDropdown
+          dropdownMode="select"
+          className="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 text-black dark:text-white transition-all duration-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 outline-none"
+          placeholderText="Pilih tanggal lahir"
+        />
+      </div>
       <Select
         label="Jenis Kelamin"
         options={GENDER_OPTIONS}

@@ -72,7 +72,7 @@ const initialData: RegistrationData = {
   fullName: "",
   nik: "",
   pob: "",
-  dob: "",
+  dob: new Date().toISOString().split('T')[0],
   gender: "Laki-laki",
   religion: "Islam",
   occupation: "Karyawan",
