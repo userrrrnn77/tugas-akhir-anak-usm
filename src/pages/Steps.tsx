@@ -57,21 +57,16 @@ export const StepDataPribadi = () => {
             formData.dob ? new Date(formData.dob.replace(/-/g, "/")) : null
           }
           onChange={(date: Date | null) => {
-            console.log("=== DEBUG DATEPICKER RE ===");
-            console.log("1. Raw Object Lokal :", date);
-
             if (!date) {
               updateField("dob", "");
               return;
             }
 
-            // JALUR AMANAH: Ambil Tahun, Bulan, Hari murni dari local time laptop lu!
             const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, "0"); // Bulan berawal dari 0, wajib +1!
+            const month = String(date.getMonth() + 1).padStart(2, "0");
             const day = String(date.getDate()).padStart(2, "0");
 
             const formattedDate = `${year}-${month}-${day}`;
-            console.log("2. Hasil Fix Lokal  :", formattedDate);
 
             updateField("dob", formattedDate);
           }}
