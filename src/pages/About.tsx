@@ -3,6 +3,7 @@ import Container from "../components/layout/Container";
 import Card from "../components/ui/Card";
 import Title from "../components/common/Title";
 import { carousel } from "../assets/image/carousel";
+import CarouselJajaran from "../components/layout/CarouselJajaran";
 
 const About: React.FC = () => {
   const values = [
@@ -24,7 +25,6 @@ const About: React.FC = () => {
     <div className="py-24 bg-slate-50 dark:bg-slate-950 min-h-screen">
       <Title>Tentang Kami | Mitra Hasanah</Title>
       <Container>
-
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center mb-28">
           {/* Sisi Kiri: Narasi */}
           <div className="lg:w-1/2 order-2 lg:order-1">
@@ -55,7 +55,7 @@ const About: React.FC = () => {
                 <img
                   src={carousel.img1}
                   alt="Kantor Utama Mitra Hasanah"
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                  className="w-full h-full object-cover transition-all duration-700 scale-105 group-hover:scale-100"
                 />
                 {/* Label Badge Kantor */}
                 <div className="absolute bottom-6 left-6 bg-slate-900/80 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20">
@@ -87,7 +87,11 @@ const About: React.FC = () => {
             </div>
           ))}
         </div>
+      </Container>
 
+      <CarouselJajaran />
+
+      <Container>
         {/* Milestone Sejarah - Lebih Formal */}
         <div className="mb-28">
           <div className="flex items-end justify-between mb-12 border-b border-slate-200 dark:border-slate-800 pb-6">

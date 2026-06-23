@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"; 
+import React, { useEffect, useState } from "react";
 import Container from "../components/layout/Container";
 import Card from "../components/ui/Card";
 import { X } from "lucide-react"; // 2. Buat tombol close modal
@@ -46,34 +46,36 @@ const Products: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {isLoading
-              ? Array(simpanan.length || 5).fill(0).map((_, i) => (
-                  <div
-                    key={i}
-                    className="group overflow-hidden bg-white dark:bg-slate-900 rounded-3xl shadow-xl flex flex-col animate-pulse">
-                    {/* Skeleton Image Area */}
-                    <div className="h-40 bg-slate-200 dark:bg-slate-800 relative">
-                      <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
-                      {/* Skeleton Icon Box */}
-                      <div className="absolute bottom-3 left-3 w-8 h-8 bg-slate-300 dark:bg-slate-700 rounded-lg"></div>
-                    </div>
+              ? Array(simpanan.length || 5)
+                  .fill(0)
+                  .map((_, i) => (
+                    <div
+                      key={i}
+                      className="group overflow-hidden bg-white dark:bg-slate-900 rounded-3xl shadow-xl flex flex-col animate-pulse">
+                      {/* Skeleton Image Area */}
+                      <div className="h-40 bg-slate-200 dark:bg-slate-800 relative">
+                        <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
+                        {/* Skeleton Icon Box */}
+                        <div className="absolute bottom-3 left-3 w-8 h-8 bg-slate-300 dark:bg-slate-700 rounded-lg"></div>
+                      </div>
 
-                    {/* Skeleton Content Area */}
-                    <div className="p-5 grow space-y-3">
-                      <div className="h-5 w-3/4 bg-slate-200 dark:bg-slate-800 rounded-md italic"></div>
-                      <div className="h-3 w-1/2 bg-emerald-100 dark:bg-emerald-900/30 rounded"></div>
-                      <div className="space-y-2 pt-2">
-                        <div className="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded"></div>
-                        <div className="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded"></div>
-                        <div className="h-3 w-2/3 bg-slate-100 dark:bg-slate-800 rounded"></div>
+                      {/* Skeleton Content Area */}
+                      <div className="p-5 grow space-y-3">
+                        <div className="h-5 w-3/4 bg-slate-200 dark:bg-slate-800 rounded-md italic"></div>
+                        <div className="h-3 w-1/2 bg-emerald-100 dark:bg-emerald-900/30 rounded"></div>
+                        <div className="space-y-2 pt-2">
+                          <div className="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded"></div>
+                          <div className="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded"></div>
+                          <div className="h-3 w-2/3 bg-slate-100 dark:bg-slate-800 rounded"></div>
+                        </div>
+                      </div>
+
+                      {/* Skeleton Button Area */}
+                      <div className="p-5 pt-0">
+                        <div className="w-full h-10 bg-slate-100 dark:bg-slate-800 rounded-xl"></div>
                       </div>
                     </div>
-
-                    {/* Skeleton Button Area */}
-                    <div className="p-5 pt-0">
-                      <div className="w-full h-10 bg-slate-100 dark:bg-slate-800 rounded-xl"></div>
-                    </div>
-                  </div>
-                ))
+                  ))
               : simpanan.reverse().map((item) => {
                   return (
                     <Card
@@ -125,34 +127,36 @@ const Products: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {isLoading
-              ? Array(simpanan.length || 5).fill(0).map((_, i) => (
-                  <div
-                    key={i}
-                    className="group overflow-hidden bg-white dark:bg-slate-900 rounded-3xl shadow-xl flex flex-col animate-pulse">
-                    {/* Skeleton Image Area */}
-                    <div className="h-40 bg-slate-200 dark:bg-slate-800 relative">
-                      <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
-                      {/* Skeleton Icon Box */}
-                      <div className="absolute bottom-3 left-3 w-8 h-8 bg-slate-300 dark:bg-slate-700 rounded-lg"></div>
-                    </div>
+              ? Array(simpanan.length || 5)
+                  .fill(0)
+                  .map((_, i) => (
+                    <div
+                      key={i}
+                      className="group overflow-hidden bg-white dark:bg-slate-900 rounded-3xl shadow-xl flex flex-col animate-pulse">
+                      {/* Skeleton Image Area */}
+                      <div className="h-40 bg-slate-200 dark:bg-slate-800 relative">
+                        <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
+                        {/* Skeleton Icon Box */}
+                        <div className="absolute bottom-3 left-3 w-8 h-8 bg-slate-300 dark:bg-slate-700 rounded-lg"></div>
+                      </div>
 
-                    {/* Skeleton Content Area */}
-                    <div className="p-5 grow space-y-3">
-                      <div className="h-5 w-3/4 bg-slate-200 dark:bg-slate-800 rounded-md italic"></div>
-                      <div className="h-3 w-1/2 bg-emerald-100 dark:bg-emerald-900/30 rounded"></div>
-                      <div className="space-y-2 pt-2">
-                        <div className="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded"></div>
-                        <div className="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded"></div>
-                        <div className="h-3 w-2/3 bg-slate-100 dark:bg-slate-800 rounded"></div>
+                      {/* Skeleton Content Area */}
+                      <div className="p-5 grow space-y-3">
+                        <div className="h-5 w-3/4 bg-slate-200 dark:bg-slate-800 rounded-md italic"></div>
+                        <div className="h-3 w-1/2 bg-emerald-100 dark:bg-emerald-900/30 rounded"></div>
+                        <div className="space-y-2 pt-2">
+                          <div className="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded"></div>
+                          <div className="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded"></div>
+                          <div className="h-3 w-2/3 bg-slate-100 dark:bg-slate-800 rounded"></div>
+                        </div>
+                      </div>
+
+                      {/* Skeleton Button Area */}
+                      <div className="p-5 pt-0">
+                        <div className="w-full h-10 bg-slate-100 dark:bg-slate-800 rounded-xl"></div>
                       </div>
                     </div>
-
-                    {/* Skeleton Button Area */}
-                    <div className="p-5 pt-0">
-                      <div className="w-full h-10 bg-slate-100 dark:bg-slate-800 rounded-xl"></div>
-                    </div>
-                  </div>
-                ))
+                  ))
               : pembiayaan.map((item) => {
                   return (
                     <div
@@ -210,8 +214,7 @@ const Products: React.FC = () => {
             </button>
             <div
               className="relative max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl shadow-2xl animate-in zoom-in duration-300"
-              onClick={(e) => e.stopPropagation()} 
-            >
+              onClick={(e) => e.stopPropagation()}>
               <img
                 src={selectedImg}
                 alt="Product Preview"

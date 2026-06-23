@@ -144,20 +144,42 @@ const Home: React.FC = () => {
               Langkah Awal Keberkahan
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-6 uppercase italic tracking-tighter">
-              Bergabung Menjadi <span className="text-emerald-600">Bagian</span>{" "}
-              Dari Umat
+              Bergabung Menjadi <span className="text-emerald-600">Anggota</span>{" "}
+              KSPPS Berkah Mitra Hasanah
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+            <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed mb-6">
               Daftarkan diri Anda sekarang untuk mendapatkan akses layanan
               finansial syariah yang
               <span className="text-slate-900 dark:text-white font-bold">
                 {" "}
                 Adil, Transparan, dan Amanah.
-              </span>
+              </span>{" "}
               Proses mudah, cepat, dan sesuai dengan prinsip syariah.
             </p>
-          </div>
 
+            {/* AMUNISI TAMBAHAN DARI BOSNYA FAJAR YANG SUDAH DI-UPGRADE BIAR GAK KELIATAN KASTA GEMBEL */}
+            <div className="inline-block bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 rounded-xl p-4 text-left max-w-xl mx-auto backdrop-blur-sm">
+              <div className="flex items-start gap-3">
+                <div className="mt-0.5 bg-emerald-600 text-white rounded-full p-1 text-[10px] font-bold h-5 w-5 flex items-center justify-center shrink-0">
+                  ✓
+                </div>
+                <p className="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                  <span className="font-bold text-emerald-700 dark:text-emerald-400 block mb-0.5 uppercase tracking-wider text-[10px]">
+                    Persyaratan Anggota KSPPS Berkah Mitra Hasanah:
+                  </span>
+                  Membayar{" "}
+                  <span className="font-bold text-slate-900 dark:text-white">
+                    setoran wajib sebesar Rp20.000
+                  </span>{" "}
+                  dan{" "}
+                  <span className="font-bold text-slate-900 dark:text-white">
+                    setoran pokok sebesar Rp18.000
+                  </span>{" "}
+                  yang disetorkan secara bersamaan di awal pendaftaran.
+                </p>
+              </div>
+            </div>
+          </div>
           <Card className="max-w-3xl mx-auto shadow-2xl border-t-4 border-t-emerald-600 rounded-3xl p-8">
             <Stepper currentStep={currentStep} steps={steps} />
 

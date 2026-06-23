@@ -4,7 +4,6 @@ import Container from "../components/layout/Container";
 import Title from "../components/common/Title";
 import useLayananStore, { type INews } from "../store/useLayananStore";
 import { ArrowRight, Calendar, Search, Newspaper } from "lucide-react";
-import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 
 interface ImageCollageProps {
@@ -120,7 +119,7 @@ const News: React.FC = () => {
   const [searchKeyword, setSearchKeyword] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("Semua");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const categories = ["Semua", "Berita Koperasi", "Artikel", "Info Terkini"];
 
@@ -129,8 +128,7 @@ const News: React.FC = () => {
   }, [fetchAllNews]);
 
   const handleReadMore = (slug: string) => {
-    toast.info(`Membuka artikel: ${slug}`);
-    navigate(`/news/${slug}`) 
+    navigate(`/news/${slug}`);
   };
 
   const filteredNews = newsList.filter((item) => {

@@ -1,31 +1,31 @@
 export const PRODUCTS = [
   {
-    id: "sirela",
-    title: "SIRELA",
-    desc: "Simpanan Sukarela yang bisa diambil kapan saja. Cocok buat simpanan harian yang amanah.",
-    icon: "💰",
-    color: "bg-blue-500",
-  },
-  {
-    id: "sisidik",
-    title: "SISIDIK",
-    desc: "Simpanan Siswa & Pendidikan. Siapkan masa depan buah hati dengan perencanaan syariah.",
-    icon: "🎓",
+    id: "sisuqur", // Kita satuin kesatuan biar rapi
+    title: "Simpanan Qurban",
+    desc: "Persiapan ibadah qurban jadi lebih terencana dan ringan dengan setoran yang terukur.",
+    icon: "📈",
     color: "bg-emerald-500",
   },
   {
-    id: "simapan",
-    title: "SIMAPAN",
-    desc: "Simpanan Masa Depan. Investasi jangka panjang dengan bagi hasil yang kompetitif.",
-    icon: "📈",
-    color: "bg-amber-500",
+    id: "talangan haji umroh", // REVISI FAJAR 1
+    title: "TALANGAN HAJI & UMROH",
+    desc: "Layanan pembiayaan khusus untuk membantu Anda menyegerakan ibadah ke Tanah Suci tanpa kendala biaya.",
+    icon: "🕋",
+    color: "bg-blue-500",
   },
   {
-    id: "pembiayaan",
-    title: "PEMBIAYAAN",
-    desc: "Butuh modal usaha atau renovasi rumah? Kami hadir dengan akad murni syariah tanpa riba.",
-    icon: "🏠",
+    id: "sirela", // REVISI FAJAR 2
+    title: "Simpanan Suka Rela",
+    desc: "Fleksibilitas tinggi, setoran dan penarikan bisa kapan saja tanpa batasan saldo minimal.",
+    icon: "💰",
     color: "bg-purple-500",
+  },
+  {
+    id: "mobil layanan umat", // REVISI FAJAR 3 (BAITUL MAAL)
+    title: "MOBIL LAYANAN UMAT",
+    desc: "Program Baitul Maal peduli sesama melalui penyediaan armada layanan sosial gratis bagi kemaslahatan umat.",
+    icon: "🚑",
+    color: "bg-amber-500",
   },
 ];
 
@@ -136,7 +136,6 @@ export const PRODUCTS_DATA: ProductItem[] = [
     image: imageSimpan.simhas,
     category: "simpanan",
   },
-
   {
     id: "sisyah",
     title: "Simpanan Syariah",
@@ -162,8 +161,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     title: "Murabahah",
     desc: "Pembiayaan kepemilikan barang dengan skema jual beli yang marginnya disepakati di awal.",
     icon: React.createElement(Briefcase),
-    image:
-      imagePinjaman.modalusahas,
+    image: imagePinjaman.modalusahas,
     category: "pembiayaan",
   },
   {
@@ -171,17 +169,15 @@ export const PRODUCTS_DATA: ProductItem[] = [
     title: "Mudharabah",
     desc: "Pembiayaan modal usaha dengan prinsip bagi hasil murni untuk pertumbuhan bisnis Anda.",
     icon: React.createElement(Users),
-    image:
-      imagePinjaman.milikiemas,
+    image: imagePinjaman.milikiemas,
     category: "pembiayaan",
   },
   {
-    id: "haji-umroh",
-    title: "Haji & Umroh",
-    desc: "Layanan pembiayaan khusus untuk membantu Anda berangkat ke Tanah Suci lebih cepat.",
+    id: "talangan-haji-umroh", // REVISI PRODUK PEMBIAYAAN (TALANGAN HAJI & UMROH)
+    title: "Talangan Haji & Umroh",
+    desc: "Layanan pembiayaan khusus dan talangan terpercaya untuk mempermudah keberangkatan Anda menuju ibadah Haji dan Umroh.",
     icon: React.createElement(Moon),
-    image:
-      imagePinjaman.raihpanggilanIlahi,
+    image: imagePinjaman.raihpanggilanIlahi,
     category: "pembiayaan",
   },
   {
@@ -189,9 +185,17 @@ export const PRODUCTS_DATA: ProductItem[] = [
     title: "Emas",
     desc: "Miliki emas batangan sebagai investasi masa depan dengan skema angsuran yang ringan.",
     icon: React.createElement(Gem),
-    image:
-      imagePinjaman.gambar4,
+    image: imagePinjaman.gambar4,
     category: "pembiayaan",
   },
-];
 
+  // --- PROGRAM BAITUL MAAL ---
+  {
+    id: "mobil-layanan-umat", // REVISI PROGRAM BAITUL MAAL 1 (MOBIL LAYANAN UMAT)
+    title: "Mobil Layanan Umat",
+    desc: "Program pengelolaan dana sosial Baitul Maal KSPPS Berkah Mitra Hasanah yang diwujudkan dalam bentuk armada ambulans dan layanan sosial gratis untuk masyarakat.",
+    icon: React.createElement(HeartHandshake), // Pake icon sosial yang ready
+    image: imageSimpan.sisuqur, // Nanti tinggal lu ganti jalurnya mbot kalau ada asset khusus
+    category: "pembiayaan", // Atau sesuaikan dengan kategori program sosial lu
+  },
+];

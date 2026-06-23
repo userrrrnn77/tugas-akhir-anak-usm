@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           {/* Brand Info */}
           <div className="space-y-4">
             <h3 className="text-white text-xl font-bold">
-              KSPPS Mitra Hasanah
+              KSPPS Berkah Mitra Hasanah
             </h3>
             <p className="text-sm leading-relaxed">
               Melayani masyarakat dengan prinsip syariah sejak tahun 2003 di
@@ -38,9 +38,10 @@ const Footer: React.FC = () => {
               Kantor Cabang
             </h4>
             <p className="text-sm leading-relaxed">
-              Jl. Puri Dinar Asri Raya No.1,
+              Jl. Puri Dinar Asri Raya, 
               <br />
-              Meteseh, Kec. Tembalang, Kota Semarang,
+              Ruko No. 4 Kel. Meteseh, Kec. Tembalang,
+              Kota Semarang
               <br />
               Jawa Tengah 50271
             </p>

@@ -76,7 +76,7 @@ const NewsDetail: React.FC = () => {
       <Container>
         {/* BUTTON BACK TO MEDIA CENTER */}
         <button
-          onClick={() => navigate("/berita")}
+          onClick={() => navigate(-1)}
           className="group flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-500 mb-8 hover:text-emerald-500 transition-colors cursor-pointer">
           <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
           <span>Kembali ke Berita</span>

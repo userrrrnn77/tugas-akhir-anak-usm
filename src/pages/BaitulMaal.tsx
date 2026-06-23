@@ -1,11 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import Container from "../components/layout/Container";
-import { Copy, Check } from "lucide-react";
 import Title from "../components/common/Title";
 import useLayananStore from "../store/useLayananStore";
-import logoMbuh from "../assets/logo-mbuh.png";
-import { toast } from "sonner";
-import Button from "../components/ui/Button";
+import ZiswafSection from "../components/layout/ZiwafSection";
 
 const BaitulMaal: React.FC = () => {
   // --- STATE & REF (THE WIZARD MODAL LOGIC) ---
@@ -14,15 +11,7 @@ const BaitulMaal: React.FC = () => {
   const [modalType, setModalType] = useState<"video" | "image">("video");
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const [copied, setCopied] = useState(false);
-  const noRek = "4455559998";
-
   const { programs, fetchAllPrograms, isLoading } = useLayananStore();
-
-  const waNumber = "6282138089198"; 
-  const message = encodeURIComponent(
-    `Halo Admin KSPPS Mitra Hasanah, saya mau konfirmasi donasi yang baru saja saya transfer melalui rekening BSI. Mohon dibantu untuk proses pencatatannya ya, Syukron! 🙏✨`,
-  );
 
   useEffect(() => {
     fetchAllPrograms();
@@ -34,13 +23,6 @@ const BaitulMaal: React.FC = () => {
       setPlayState(false);
       setModalContent("");
     }
-  };
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(noRek);
-    setCopied(true);
-    toast.success("No. Rekening Berhasil Dicopy"); 
-    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -258,93 +240,7 @@ const BaitulMaal: React.FC = () => {
         </div>
 
         {/* CTA SECTION */}
-        <div className="mt-56 p-8 md:p-24 bg-slate-900 rounded-[4rem] text-center relative overflow-hidden border border-white/5">
-          {/* Background Glows */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/20 rounded-full -mr-32 -mt-32 blur-[120px]"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-600/10 rounded-full -ml-32 -mb-32 blur-[100px]"></div>
-
-          <div className="relative z-10 flex flex-col items-center">
-            {/* LOGO MBUH - Gue taro atas biar dapet spotlight! */}
-            <img
-              src={logoMbuh}
-              alt="Logo"
-              className="relative z-10 h-28 md:h-32 w-auto object-contain drop-shadow-[0_0_35px_rgba(16,185,129,0.4)] hover:scale-110 transition-transform duration-500 ease-out cursor-pointer mb-10"
-            />
-
-            <div className="mb-10 flex flex-col items-center">
-              <span className="text-emerald-500 font-black text-sm md:text-lg uppercase tracking-[0.4em] italic mb-4">
-                Salurkan ZISWAF Anda Melalui:
-              </span>
-              <h3 className="text-white text-xl md:text-2xl font-bold uppercase tracking-tight">
-                ULAZ MKU BERKAH MITRA HASANAH
-              </h3>
-              <div className="h-px w-24 bg-emerald-500/30 mt-6"></div>
-            </div>
-
-            <div className="bg-slate-800/50 backdrop-blur-xl p-8 rounded-4xl border border-white/10 w-full max-w-xl mb-12">
-              <p className="text-slate-400 uppercase text-xs font-black tracking-widest mb-4">
-                Rekening ZISWAF
-              </p>
-
-              {/* PLACEHOLDER LOGO BSI - Lu ganti link gambarnya ntar! */}
-              <div className="flex flex-col items-center gap-4">
-                <div className="h-12 w-32 rounded-lg flex items-center justify-center overflow-hidden">
-                  {/* Pake placeholder dulu, ntar lu ganti img logo BSI asli bre */}
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Bank_Syariah_Indonesia.svg/960px-Bank_Syariah_Indonesia.svg.png"
-                    alt=""
-                  />
-                </div>
-
-                <div className="flex flex-col items-center">
-                  <div
-                    onClick={handleCopy}
-                    className="group cursor-pointer flex items-center gap-4 bg-slate-950 px-8 py-4 rounded-2xl border border-emerald-500/20 hover:border-emerald-500 transition-all active:scale-95">
-                    <span className="text-3xl md:text-5xl font-black text-white tracking-widest">
-                      {noRek}
-                    </span>
-                    {copied ? (
-                      <Check className="text-emerald-500" size={32} />
-                    ) : (
-                      <Copy
-                        className="text-slate-500 group-hover:text-emerald-500"
-                        size={32}
-                      />
-                    )}
-                  </div>
-                  <p className="mt-4 text-emerald-500 font-bold uppercase text-lg tracking-tighter">
-                    YMKU ULAZ BERKAH MITRA HASANAH
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <Button
-              onClick={() =>
-                window.open(
-                  `https://wa.me/${waNumber}?text=${message}`,
-                  "_blank",
-                )
-              }
-              className="bg-emerald-600 text-white px-16 py-6 rounded-2xl font-black text-xl hover:bg-emerald-500 hover:scale-105 transition-all shadow-[0_20px_50px_rgba(16,185,129,0.3)] uppercase italic tracking-tighter group">
-              <span className="flex items-center gap-3">
-                Konfirmasi via WhatsApp
-                <svg
-                  className="w-6 h-6 group-hover:translate-x-2 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="3"
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </span>
-            </Button>
-          </div>
-        </div>
+        <ZiswafSection />
       </Container>
 
       {/* --- THE MASTER MODAL --- */}
