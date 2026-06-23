@@ -130,7 +130,7 @@ const About: React.FC = () => {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-video bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl">
+              <div className="aspect-video bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden flex items-center justify-center transition-all duration-700 shadow-2xl">
                 <img src={carousel.img2} alt="" />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-emerald-600 p-8 rounded-2xl text-white font-bold shadow-xl">
