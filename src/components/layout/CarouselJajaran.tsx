@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MANAGEMENT_DATA } from "../../constants/management";
-import { User, ChevronLeft, ChevronRight } from "lucide-react"; // SUNTIK NAVIGASI BARU
+import { User, ChevronLeft, ChevronRight } from "lucide-react";
 
 const CarouselJajaran = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -17,22 +17,13 @@ const CarouselJajaran = () => {
     );
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 7000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="w-full min-h-150 relative overflow-hidden bg-slate-100 dark:bg-dark-bg py-16 px-4 flex flex-col items-center justify-center transition-colors duration-500 group/carousel mb-28">
       <div className="absolute inset-0 opacity-10 dark:opacity-5 pointer-events-none mix-blend-overlay bg-[radial-gradient(#059669_1px,transparent_1px)] bg-size[16px_16px]"></div>
 
-      {/* Background Glow Gaib */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-primary-500/10 dark:bg-primary-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-      <div className="w-full max-w-6xl relative z-10 flex flex-col items-center px-4 md:px-12">
+      <div className="w-full max-w-6xl relative z-10 flex flex-col items-center px-2 md:px-12">
         {MANAGEMENT_DATA.map((section, sectionIdx) => {
           const isActive = sectionIdx === currentIndex;
 
@@ -53,10 +44,8 @@ const CarouselJajaran = () => {
                   <div
                     key={`${section.key}-${idx}`}
                     className="w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-22px)] bg-white dark:bg-dark-card/60 backdrop-blur-xl border border-slate-200 dark:border-white/10 rounded-4xl p-6 flex flex-col items-center text-center shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden">
-                    {/* Border highlight bawah mirip style BMT */}
                     <div className="absolute bottom-0 inset-x-0 h-1.5 bg-linear-to-r from-primary-500 to-secondary-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-4xl"></div>
 
-                    {/* FRAME FOTO PREMIUM PAS BADAN */}
                     <div className="w-36 h-48 rounded-2xl overflow-hidden mb-5 bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-white/5 shadow-inner flex items-center justify-center transform group-hover:scale-105 transition-transform duration-500 text-slate-300 dark:text-slate-700">
                       {member.image ? (
                         <img
@@ -69,8 +58,7 @@ const CarouselJajaran = () => {
                       )}
                     </div>
 
-                    {/* NAMA DAN DETAIL JABATAN */}
-                    <h3 className="text-dark-bg dark:text-white font-black text-base md:text-lg tracking-tight leading-tight uppercase transition-colors duration-300 min-h-10 flex items-center">
+                    <h3 className="text-dark-bg dark:text-white font-black text-base md:text-lg tracking-tight leading-tight transition-colors duration-300 min-h-10 flex items-center">
                       {member.name}
                     </h3>
 
@@ -86,16 +74,17 @@ const CarouselJajaran = () => {
 
         <button
           onClick={handlePrev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-30 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white/80 dark:bg-dark-card/80 backdrop-blur-md border border-slate-200 dark:border-white/10 text-dark-bg dark:text-white hover:bg-primary-500 dark:hover:bg-primary-500 hover:text-white shadow-md opacity-0 group-hover/carousel:opacity-100 -translate-x-4 group-hover/carousel:translate-x-0 transition-all duration-300 cursor-pointer"
+          className="absolute -left-2.5 md:left-0 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-dark-bg dark:text-white active:scale-95 shadow-lg md:opacity-0 md:group-hover/carousel:opacity-100 md:-translate-x-4 md:group-hover/carousel:translate-x-0 transition-all duration-300 cursor-pointer"
           aria-label="Previous slide">
-          <ChevronLeft size={24} className="stroke-[2.5]" />
+          <ChevronLeft size={24} className="stroke-3" />
         </button>
 
+        {/* 🛠️ FIX PANAH KANAN: NONGOL PERKASA DI HP DAN DESKTOP */}
         <button
           onClick={handleNext}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-30 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white/80 dark:bg-dark-card/80 backdrop-blur-md border border-slate-200 dark:border-white/10 text-dark-bg dark:text-white hover:bg-primary-500 dark:hover:bg-primary-500 hover:text-white shadow-md opacity-0 group-hover/carousel:opacity-100 translate-x-4 group-hover/carousel:translate-x-0 transition-all duration-300 cursor-pointer"
+          className="absolute -right-2.5 md:right-0 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-dark-bg dark:text-white active:scale-95 shadow-lg md:opacity-0 md:group-hover/carousel:opacity-100 md:translate-x-4 md:group-hover/carousel:translate-x-0 transition-all duration-300 cursor-pointer"
           aria-label="Next slide">
-          <ChevronRight size={24} className="stroke-[2.5]" />
+          <ChevronRight size={24} className="stroke-3" />
         </button>
       </div>
 

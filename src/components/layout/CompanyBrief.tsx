@@ -33,7 +33,7 @@ const CompanyBrief: React.FC = () => {
               melakukan
               <span className="text-emerald-600">
                 {" "}
-                Peruahan Anggaran Dasar (PAD){" "}
+                Perubahan Anggaran Dasar (PAD){" "}
               </span>
               dari badan hukum kota semarang menjadi badan hukum jawa tengah.
             </p>

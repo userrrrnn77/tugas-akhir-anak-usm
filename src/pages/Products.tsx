@@ -164,7 +164,7 @@ const Products: React.FC = () => {
                       className="group bg-white dark:bg-slate-900 rounded-4xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 dark:border-slate-800 flex flex-col">
                       <div
                         className="h-48 overflow-hidden relative cursor-zoom-in"
-                        onClick={() => setSelectedImg(item.image)} // 4. Click buat zoom
+                        onClick={() => setSelectedImg(item.image)} 
                       >
                         <img
                           src={item.image}
@@ -189,11 +189,6 @@ const Products: React.FC = () => {
                               →
                             </span>
                           </Link>
-
-                          {/* Secondary Action: Langsung Ajukan */}
-                          <button className="w-full py-3 text-emerald-600 dark:text-emerald-400 font-black text-[10px] uppercase tracking-[0.2em] border border-emerald-600/20 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-xl transition-all">
-                            AJUKAN SEKARANG
-                          </button>
                         </div>
                       </div>
                     </div>

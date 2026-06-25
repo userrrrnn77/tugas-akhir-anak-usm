@@ -169,11 +169,11 @@ const Home: React.FC = () => {
                   </span>
                   Membayar{" "}
                   <span className="font-bold text-slate-900 dark:text-white">
-                    setoran wajib sebesar Rp20.000
+                    setoran wajib sebesar Rp18.000
                   </span>{" "}
                   dan{" "}
                   <span className="font-bold text-slate-900 dark:text-white">
-                    setoran pokok sebesar Rp18.000
+                    setoran pokok sebesar Rp20.000
                   </span>{" "}
                   yang disetorkan secara bersamaan di awal pendaftaran.
                 </p>

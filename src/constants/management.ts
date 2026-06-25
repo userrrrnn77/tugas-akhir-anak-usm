@@ -23,7 +23,7 @@ export const MANAGEMENT_DATA: ManagementSection[] = [
     key: "pengurus",
     members: [
       {
-        name: "Supriyadi, S.E., M.M.",
+        name: "H.Mohamad SUPRIYADI, SE.MM",
         role: "Ketua Pengurus",
         image: supriyadi,
       },
@@ -44,12 +44,12 @@ export const MANAGEMENT_DATA: ManagementSection[] = [
     key: "pengawas",
     members: [
       {
-        name: "H. Ahmad Setyo Budi",
+        name: "H. Ahmad SetyoBudi",
         role: "Ketua Pengawas",
-        image: undefined, // Nunggu sesi foto sesepuh jembot kata Fajar
+        image: undefined, 
       },
       {
-        name: "Nurkholis, S.Pd.",
+        name: "Nur Kholis ,S.PD",
         role: "Anggota Pengawas",
         image: undefined,
       },
@@ -70,12 +70,12 @@ export const MANAGEMENT_DATA: ManagementSection[] = [
         image: undefined,
       },
       {
-        name: "K.H. Ali Khoiron, S.Pd.",
+        name: "KH. ALI KHOIRON, S.PD",
         role: "Anggota DPS",
         image: undefined,
       },
       {
-        name: "Joko Prasetyo, S.E., M.Ak.",
+        name: "Joko Prasetiyo SE. ,M.AK",
         role: "Anggota DPS",
         image: undefined,
       },
@@ -86,7 +86,7 @@ export const MANAGEMENT_DATA: ManagementSection[] = [
     key: "direksi",
     members: [
       {
-        name: "Supriyadi, S.E., M.M.",
+        name: "H.Mohamad SUPRIYADI, SE.MM",
         role: "Direktur Utama",
         image: supriyadi,
       },

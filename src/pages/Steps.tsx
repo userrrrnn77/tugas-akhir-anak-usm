@@ -20,12 +20,11 @@ import {
 import { toast } from "sonner";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { cleanNumber, formatRupiah } from "../utils/formatter";
 
 // --- STEP 1: DATA PRIBADI ---
 export const StepDataPribadi = () => {
   const { formData, updateField } = useRegistrationStore();
-
-  console.log("default formdata.dob: ", formData.dob);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
@@ -61,13 +60,10 @@ export const StepDataPribadi = () => {
               updateField("dob", "");
               return;
             }
-
             const year = date.getFullYear();
             const month = String(date.getMonth() + 1).padStart(2, "0");
             const day = String(date.getDate()).padStart(2, "0");
-
             const formattedDate = `${year}-${month}-${day}`;
-
             updateField("dob", formattedDate);
           }}
           dateFormat="yyyy-MM-dd"
@@ -145,6 +141,7 @@ export const StepPekerjaan = () => {
 // --- STEP 3: PRODUK & KONTAK ---
 export const StepKonfirmasi = () => {
   const { formData, updateField } = useRegistrationStore();
+  const initialDepositRaw = cleanNumber(formData.initialDeposit);
 
   return (
     <div className="flex flex-col gap-6 w-full animate-in fade-in slide-in-from-bottom-4 duration-500 text-left">
@@ -157,11 +154,12 @@ export const StepKonfirmasi = () => {
         />
         <Input
           label="Setoran Awal (Rp)"
-          placeholder="0"
-          value={formData.initialDeposit}
-          onChange={(e) =>
-            updateField("initialDeposit", e.target.value.replace(/\D/g, ""))
-          }
+          placeholder="Rp 0"
+          value={initialDepositRaw === 0 ? "" : formatRupiah(initialDepositRaw)}
+          onChange={(e) => {
+            const numericValue = cleanNumber(e.target.value);
+            updateField("initialDeposit", String(numericValue));
+          }}
         />
         <Input
           label="Nomor WhatsApp"
@@ -209,7 +207,7 @@ export const BarcodeAndNorek = () => {
 
   const handleCopyNorek = () => {
     navigator.clipboard.writeText(NOREK_BSI);
-    toast.success("Nomor Rekening BSI berhasil disalin, Bre! 📋");
+    toast.success("Nomor Rekening BSI berhasil disalin 📋");
   };
 
   const handleCopyNominal = () => {
