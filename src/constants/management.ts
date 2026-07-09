@@ -89,7 +89,7 @@ export const MANAGEMENT_DATA: ManagementSection[] = [
     key: "direksi",
     members: [
       {
-        name: "H.Mohamad SUPRIYADI, SE.MM",
+        name: "H.Mohamad Supriyadi, SE.MM",
         role: "Direktur Utama",
         image: supriyadi,
       },
