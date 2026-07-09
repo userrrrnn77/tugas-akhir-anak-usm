@@ -88,7 +88,9 @@ const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col">
-      <Title>Mitra Hasanah | KSPPS Berkah Mitra Hasanah</Title>
+      <Title>
+        Mitra Hasanah | KSPPS Berkah Mitra Hasanah - Finansial Syariah
+      </Title>
       <main className="grow py-12">
         <Container>
           <div className="relative w-full h-75 md:h-112.5 mb-16 rounded-[2.5rem] overflow-hidden shadow-2xl group">
@@ -144,8 +146,9 @@ const Home: React.FC = () => {
               Langkah Awal Keberkahan
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-6 uppercase italic tracking-tighter">
-              Bergabung Menjadi <span className="text-emerald-600">Anggota</span>{" "}
-              KSPPS Berkah Mitra Hasanah
+              Bergabung Menjadi{" "}
+              <span className="text-emerald-600">Anggota</span> KSPPS Berkah
+              Mitra Hasanah
             </h2>
             <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed mb-6">
               Daftarkan diri Anda sekarang untuk mendapatkan akses layanan

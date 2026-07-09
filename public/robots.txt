@@ -1,0 +1,11 @@
+# robots.txt — KSPPS Berkah Mitra Hasanah
+# https://mitra-hasanah.vercel.app
+
+User-agent: *
+Allow: /
+
+# Halaman transaksional/privat — jangan di-index
+Disallow: /success
+Disallow: /upload-transaction
+
+Sitemap: https://mitra-hasanah.vercel.app/sitemap.xml

@@ -4,6 +4,9 @@ import arif from "../assets/image/tuman/ArifMutohar.jpeg";
 import khoirur from "../assets/image/tuman/KhoirurRozikin.jpeg";
 import rifka from "../assets/image/tuman/RifkaFitriyani.jpeg";
 import shofwata from "../assets/image/tuman/ShofwataA'yun.jpeg";
+import joko from "../assets/image/tuman/DPS Joko Prasetiyo, S.E., M. Ak.jpg.jpeg";
+import ahmad from "../assets/image/tuman/H. Ahmad SetyoBudi.jpg.jpeg";
+import nurkholis from "../assets/image/tuman/Nur Kholis S.PD.JPG.jpeg";
 
 export interface ManagementMember {
   name: string;
@@ -23,7 +26,7 @@ export const MANAGEMENT_DATA: ManagementSection[] = [
     key: "pengurus",
     members: [
       {
-        name: "H.Mohamad SUPRIYADI, SE.MM",
+        name: "H.Mohamad Supriyadi, SE.MM",
         role: "Ketua Pengurus",
         image: supriyadi,
       },
@@ -46,12 +49,12 @@ export const MANAGEMENT_DATA: ManagementSection[] = [
       {
         name: "H. Ahmad SetyoBudi",
         role: "Ketua Pengawas",
-        image: undefined, 
+        image: ahmad,
       },
       {
         name: "Nur Kholis ,S.PD",
         role: "Anggota Pengawas",
-        image: undefined,
+        image: nurkholis,
       },
       {
         name: "Khoirur Rozikin, S.HI.",
@@ -70,14 +73,14 @@ export const MANAGEMENT_DATA: ManagementSection[] = [
         image: undefined,
       },
       {
-        name: "KH. ALI KHOIRON, S.PD",
+        name: "KH. Ali Khoiron, S.PD",
         role: "Anggota DPS",
         image: undefined,
       },
       {
         name: "Joko Prasetiyo SE. ,M.AK",
         role: "Anggota DPS",
-        image: undefined,
+        image: joko,
       },
     ],
   },
