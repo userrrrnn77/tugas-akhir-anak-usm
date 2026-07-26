@@ -1,5 +1,5 @@
 # robots.txt — KSPPS Berkah Mitra Hasanah
-# https://mitra-hasanah.vercel.app
+# https://mitra-hasanah.com
 
 User-agent: *
 Allow: /
@@ -8,4 +8,4 @@ Allow: /
 Disallow: /success
 Disallow: /upload-transaction
 
-Sitemap: https://mitra-hasanah.vercel.app/sitemap.xml
+Sitemap: https://mitra-hasanah.com/sitemap.xml
