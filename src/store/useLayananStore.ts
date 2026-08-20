@@ -7,7 +7,7 @@ import {
   type CreateBaitulMaal,
   type gallery,
   type ICarousel,
-  type IUploadTrf, 
+  type IUploadTrf,
 } from "../services/layanan";
 
 const toak = (msg: string, type: "success" | "error" = "success") => {
@@ -27,6 +27,21 @@ export interface INews {
 
 export interface INewsDetail extends INews {
   content: string;
+}
+
+// Bentuk minimal error axios yang kita butuhkan (hindari `any` tapi tetap
+// bisa akses err.response.data tanpa import axios types di sini).
+interface AxiosLikeError {
+  response?: {
+    data?: {
+      message?: string;
+      warnings?: string[];
+    };
+  };
+}
+
+function isAxiosLikeError(err: unknown): err is AxiosLikeError {
+  return typeof err === "object" && err !== null && "response" in err;
 }
 
 interface LayananState {
@@ -50,7 +65,9 @@ interface LayananState {
 
   fetchAllNews: () => Promise<void>;
   fetchNewsDetailBySlug: (slug: string) => Promise<void>;
-  uploadBuktiTransfer: (data: IUploadTrf) => Promise<boolean>;
+  uploadBuktiTransfer: (
+    data: IUploadTrf,
+  ) => Promise<{ success: boolean; message?: string; warnings?: string[] }>;
 }
 
 const useLayananStore = create<LayananState>((set) => ({
@@ -169,7 +186,9 @@ const useLayananStore = create<LayananState>((set) => ({
     }
   },
 
-  uploadBuktiTransfer: async (data: IUploadTrf) => {
+  uploadBuktiTransfer: async (
+    data: IUploadTrf,
+  ): Promise<{ success: boolean; message?: string; warnings?: string[] }> => {
     set({ isLoading: true, error: null });
     try {
       await layanan.uploadTransfer(data);
@@ -178,13 +197,28 @@ const useLayananStore = create<LayananState>((set) => ({
         "Bukti transaksi berhasil diunggah secara aman, mohon tunggu verifikasi admin.",
         "success",
       );
-      return true;
+      return { success: true };
     } catch (err: unknown) {
+      set({ isLoading: false });
+
+      // Kalau backend menolak karena dokumen salah jenis / tidak terbaca
+      // (400 dari validateDocumentMiddleware), axios melempar error dengan
+      // response.data berisi { success: false, message, warnings }.
+      const warnings: string[] | undefined = isAxiosLikeError(err)
+        ? err.response?.data?.warnings
+        : undefined;
+
       let msg = "Gagal mengunggah bukti transaksi.";
-      if (err instanceof Error) msg = err.message;
-      set({ error: msg, isLoading: false });
+      if (isAxiosLikeError(err) && err.response?.data?.message) {
+        msg = err.response.data.message;
+      } else if (err instanceof Error) {
+        msg = err.message;
+      }
+
+      set({ error: msg });
       toak(msg, "error");
-      return false;
+
+      return { success: false, message: msg, warnings };
     }
   },
 }));

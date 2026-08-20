@@ -111,6 +111,17 @@ export interface IUploadTrf {
   buktiKTP: string;
 }
 
+// Kalau backend mendeteksi dokumen salah jenis atau tidak terbaca (via OCR),
+// request akan ditolak dengan HTTP 400 dan body berisi `warnings` (array
+// pesan spesifik per file yang salah). Axios akan melempar ini sebagai
+// error — ditangani di uploadBuktiTransfer (useLayananStore.ts), BUKAN
+// dikembalikan sebagai response sukses.
+export interface UploadTrfErrorResponse {
+  success: false;
+  message: string;
+  warnings?: string[];
+}
+
 export const uploadTransfer = (data: IUploadTrf) =>
   api.post<ResponseBre>("/transaction/uploadTransaction", data);
 

@@ -46,11 +46,28 @@ const UploadBukti: React.FC = () => {
         buktiKTP: uploadedKtp.secure_url as string,
       };
 
-      const isSuccess = await uploadBuktiTransfer(payload);
+      const result = await uploadBuktiTransfer(payload);
 
-      if (isSuccess) {
-        
+      if (result.success) {
         navigate("/success");
+        return;
+      }
+
+      // Upload ditolak backend — biasanya karena OCR mendeteksi dokumen
+      // salah jenis atau tidak terbaca. User HARUS ganti file yang benar,
+      // jadi kita tetap di halaman ini (tidak pindah ke /success).
+      if (result.warnings && result.warnings.length > 0) {
+        result.warnings.forEach((msg) => {
+          toast.error(msg, { duration: 8000 });
+        });
+        // Reset input yang bermasalah supaya user sadar harus upload ulang
+        // file lama tidak lagi valid untuk dikirim.
+        setKtpFile(null);
+        setTransferFile(null);
+      } else {
+        toast.error(
+          result.message || "Upload ditolak. Silakan periksa berkas Anda.",
+        );
       }
     } catch (err) {
       console.error("Gagal mengunggah dokumen transaksi:", err);

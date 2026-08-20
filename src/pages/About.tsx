@@ -87,6 +87,75 @@ const About: React.FC = () => {
             </div>
           ))}
         </div>
+
+        {/* Sejarah Singkat - Replace Core Values */}
+        <div className="mb-28">
+          <div className="flex items-end justify-between mb-12 border-b border-slate-200 dark:border-slate-800 pb-6">
+            <h2 className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">
+              Sejarah Singkat
+            </h2>
+            <span className="text-slate-400 font-bold text-sm">
+              KSPPS BERKAH MITRA HASANAH
+            </span>
+          </div>
+
+          <div className="space-y-6 text-slate-600 dark:text-slate-400 leading-relaxed font-medium text-justify">
+            <p>
+              Koperasi Simpan Pinjam dan Pembiayaan Syariah (KSPPS) Berkah Mitra
+              Hasanah merupakan lembaga keuangan mikro syariah yang berdiri di
+              wilayah Genuk, Kota Semarang. Lembaga ini didirikan pada 28 Juli
+              2003 berdasarkan Akta Pendirian Koperasi Nomor 180.08/506. KSPPS
+              Berkah Mitra Hasanah lahir dari semangat untuk membangun
+              kemandirian ekonomi masyarakat serta menyediakan layanan keuangan
+              yang sesuai dengan prinsip-prinsip syariah.
+            </p>
+            <p>
+              Pada awal berdirinya, lembaga ini dikenal dengan nama BMT Mitra
+              Hasanah. Pendirian BMT tersebut diprakarsai oleh tujuh orang
+              pendiri, yaitu Supriyadi, S.E., M.M., Muhammad Ajib, Alis Asikin,
+              M. Ag, H. Achmad Setyobudi, Almarhum Mat Saleh, S.Ag., Mastur
+              Hasyim, S.Pd. dan Almarhum H. Muhammad Nasir.
+            </p>
+            <p>
+              Kehadiran BMT Mitra Hasanah dilatarbelakangi oleh kondisi ekonomi
+              masyarakat sekitar yang membutuhkan akses permodalan dan layanan
+              keuangan yang mudah, aman, serta berlandaskan prinsip syariah,
+              sekaligus menghindari para rentenir yang banyak beredar di
+              lingkungan Genuk yang mempraktekkan sistem keuangan penuh riba.
+              Sejak awal, lembaga ini berupaya melayani berbagai lapisan
+              masyarakat, termasuk pedagang, pekerja, nelayan, pelaku usaha
+              mikro, dan masyarakat umum.
+            </p>
+            <p>
+              Dalam perkembangannya, BMT Mitra Hasanah terus meningkatkan
+              profesionalisme dan pelayanan kepada anggota. Berdasarkan
+              perubahan Anggaran Dasar Nomor 13/180.08/PAD/XIV.34/XII/2015, nama
+              lembaga berubah menjadi KSPPS Berkah Mitra Hasanah, dan nama
+              tersebut mulai resmi digunakan pada awal tahun 2016.
+            </p>
+            <p>
+              Pada tanggal 2 Juni 2026, KSPPS Berkah Mitra Hasanah kembali
+              melakukan Perubahan Anggaran Dasar (PAD) dari badan hukum Kota
+              Semarang menjadi badan hukum Provinsi Jawa Tengah.
+            </p>
+            <p>
+              KSPPS Berkah Mitra Hasanah kemudian berkembang sebagai lembaga
+              keuangan syariah yang menjalankan fungsi Baitul Tamwil, yaitu
+              menghimpun dan menyalurkan dana melalui berbagai produk simpanan
+              dan pembiayaan, sekaligus menjalankan fungsi Baitul Maal melalui
+              kegiatan sosial dan pemberdayaan masyarakat.
+            </p>
+            <p>
+              Selama lebih dari dua dekade, KSPPS Berkah Mitra Hasanah terus
+              berupaya menjaga kepercayaan anggota dan masyarakat melalui
+              pelayanan yang profesional, amanah, dan berorientasi pada
+              pemberdayaan ekonomi umat. Perjalanan tersebut menjadi bagian dari
+              komitmen KSPPS Berkah Mitra Hasanah untuk tumbuh bersama anggota,
+              memberikan manfaat bagi masyarakat, dan mengembangkan ekonomi yang
+              berlandaskan prinsip syariah.
+            </p>
+          </div>
+        </div>
       </Container>
 
       <CarouselJajaran />
